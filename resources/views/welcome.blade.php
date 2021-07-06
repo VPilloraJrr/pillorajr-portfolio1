@@ -51,7 +51,21 @@
         </div>
 
         <div class="content" id="about">
-            <h1>ABOUT</h1>
+            <div class="info">
+                <div class="inform">
+                    <h3>Hi, I'm Vicente G. Pillora. Jr.,</h3>
+                    <p>And I love to create beautiful and efficient websites as a good practice in my studies. I love going in evry details from the website's concept, design and the process of launching the program. I also like to learn more about web design and also some application design which I can use to create something that can benefit in the future.</p>
+                </div>
+
+                <div class="inform">
+                    <h3>Hi, I'm Vicente G. Pillora. Jr.,</h3>
+                    <p>AAAAAAA</p>
+                </div>
+                    
+                <div class="img">
+                    <img src="{{ asset('assets/pics/Pillora.jpg') }}">
+                </div>
+            </div>
         </div>
 
         <div class="content" id="skill">
