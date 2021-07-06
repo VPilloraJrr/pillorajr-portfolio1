@@ -4,97 +4,82 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Page</title>
+        <title>Vicente Pillora Jr</title>
 
-        <!-- Fonts av-->
+        <!-- Fonts-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 
-        <!-- Styles testing lang-->
+        <!-- Stylesheet-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
+            .full-height{
+                background: url("{{asset('assets/pics/bg-header.jpg')}}");
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+        <div class="full-height">
+            <div class="nav">
+                <div class="top-left links">
+                    <a href="#header"><img src="{{ asset('assets/pics/VP.png') }}"></a> 
+                </div> 
                 <div class="top-right links">
+                    <a href="#header">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skill">Skills</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
                     @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div>    
             </div>
+    
+            <div class="content" id="header">
+                <div class="title">
+                    <p>Creating Designs <br /> For an Unending Innovation</p>
+                    <p class="links">
+                        <a href ="#about" class="about">Get to Know Me</a>
+                        <a href ="#contact" class="contact">Contact me</a>
+                    </p>
+                </div>    
+            </div>
+        </div>
+
+        <div class="content" id="about">
+            <h1>ABOUT</h1>
+        </div>
+
+        <div class="content" id="skill">
+            <h1>SKILLS</h1>
+        </div>
+
+        <div class="content" id="education">
+            <h1>EDUCATION</h1>
+        </div>
+
+        <div class="content" id="experience">
+            <h1>EXPERIENCE</h1>
+        </div>
+
+        <div class="content" id="portfolio">
+            <h1>PORTFOLIO</h1>
+        </div>
+
+        <div class="content" id="contact">
+            <h1 class="flex-center">Contact Information</h1>
+            <p class="flex-center">For any type of online project please don't hesitate to get in touch with me. The fastest way is to <br />send me your message using the following email <a href="#">vpillorajr@gbox.adnu.edu.ph</a></p>
+            <form method="post" action="/send"  class="flex-center">
+                @csrf
+                <input type="text" name="name" placeholder="Name"/>
+                <input type="text" name="email" placeholder="Email"/>
+                <textarea name="content" placeholder="Project Informations" class="body"></textarea>
+                <button type="submit" class="submit">Send Email</button>
+            </form>
         </div>
     </body>
 </html>

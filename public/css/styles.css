@@ -1,0 +1,137 @@
+html, body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    background:transparent;
+}
+
+.full-height {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100%;    
+}
+
+.flex-center {
+    align-content: center;
+    display: grid;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: fixed;
+    right: 0px;
+    padding-left: 413px;
+    padding-bottom: 17px;
+    padding-top: 11px;
+    background-color: white;
+    
+}
+
+.top-left {
+    position: fixed;
+    left: 0px;
+    background-color: white;
+}
+.title {
+    height: 100vh;
+    padding-top: 25vh;
+}
+.title >p {
+    font-size: 65px;
+    color: grey;
+}
+.links > a {
+    color: grey;
+    padding: 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;    
+}
+.top-right.links >a:hover, .links >a.active{
+    color:white;
+    background: rgb(201, 221, 221); 
+    padding-bottom: 18px;
+    padding-top: 20px;
+    margin:0;
+}
+.content{
+    color: black;
+}
+
+p.links a.about {
+    color: white;
+    padding: 25px 25px;
+    margin-left: 25px;
+    background: blue;
+}
+
+p.links a.about:hover {
+    background: transparent;
+    border: 1px solid white;
+}
+
+p.links a.contact {
+    color: white;
+    padding: 25px 25px;
+    background: transparent;
+}
+
+p.links a.contact:hover {
+    background: transparent;
+    border: 1px solid white;
+}
+#education, #portfolio{
+    height: 100vh;
+    background: grey;
+}
+
+#skill, #experience{
+    background: bisque;
+    height: 100vh;
+}
+
+#contact{
+    background: rgb(201, 221, 221);
+    border:solid rgb(201, 221, 221);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#contact p a {
+    color:blue;
+    text-decoration: none;
+}
+#contact input {
+    height:30px;
+    width: 600px;
+    margin-bottom: 15px;
+    text-align:left;    
+}
+
+#contact textarea.body{
+    height:200px;
+    margin-bottom: 15px;
+}
+
+#contact form.flex-center button.submit{
+    border-radius: 1000px;
+    background: blue;
+    color: white;
+    height:30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    height:30px;
+    width: 600px;
+}
+
+#contact form.flex-center button.submit:hover{
+    border-radius: 1000px;
+    background: white;
+    color: black;
+}
