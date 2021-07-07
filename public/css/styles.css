@@ -43,7 +43,7 @@ html, body {
 }
 .title >p {
     font-size: 65px;
-    color: grey;
+    color: rgb(44, 88, 90);
 }
 .links > a {
     color: grey;
@@ -89,10 +89,10 @@ p.links a.contact:hover {
 }
 
 #about {
-    height: 100%;
-    padding-top: 100px;
-    background: #f7f9f5;
-    border: 1px solid black; 
+    height: 65%;
+    padding-top: 50px;
+    background: #f7f9fb;
+    
 }
 #about div.info{
     display: inline-flex;
@@ -101,8 +101,7 @@ p.links a.contact:hover {
 #about div.info div.inform{
     width:560px;
     margin-left:30px;
-    border: 1px solid rgb(5, 5, 5);
-    border-radius: 4px;
+    
 }
 #about div.info div.img img{
     margin-left: 30px;
@@ -113,9 +112,43 @@ p.links a.contact:hover {
     padding: 5px;
     width: 50%;
 }
+#about div.info div.inform p.links a {
+    color: black;
+    margin-bottom: 30px;
+    padding: 25px 25px;
+    margin-left: 30px;
+    float:left;
+    border:solid rgb(201, 221, 221);
+}
 
-#about div.info div.img img:hover{
-    transform: scaleX(-1);
+#about div.info div.inform p.links a:hover {
+    background: rgb(201, 221, 221);
+    border: 1px solid white;
+}
+#education{
+    height:75%;
+    padding-top: 25px;
+}
+#education div.polaroid {
+    width: 20%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    float: left;
+    margin-left:50px;
+    margin-top:50px;
+}
+  
+#education div.container {
+    text-align: center;
+    padding: 10px 20px;
+}
+#education p.logo img {
+    width: 50%;
+    padding-left: 25%;
+    padding-top: 10px;
+    align-content: center;
+    justify-content: center;
 }
 
 #contact{

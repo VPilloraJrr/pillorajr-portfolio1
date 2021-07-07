@@ -53,13 +53,17 @@
         <div class="content" id="about">
             <div class="info">
                 <div class="inform">
-                    <h3>Hi, I'm Vicente G. Pillora. Jr.,</h3>
-                    <p>And I love to create beautiful and efficient websites as a good practice in my studies. I love going in evry details from the website's concept, design and the process of launching the program. I also like to learn more about web design and also some application design which I can use to create something that can benefit in the future.</p>
+                    <h2>Hi, I'm Vicente G. Pillora. Jr.,</h2>
+                    <p>And I love to create beautiful and efficient websites as a good practice in my studies. I love going in every details from the website's concept, design and the process of launching the program. I also like to learn more about web design and also some application design which I can use to create something that can benefit in the future.</p>
                 </div>
 
                 <div class="inform">
-                    <h3>Hi, I'm Vicente G. Pillora. Jr.,</h3>
-                    <p>AAAAAAA</p>
+                    <p class="links">
+                        <a href ="#skill" class="skills">Skills</a>
+                        <a href ="#education" class="educ">Education</a>
+                        <a href ="#experience" class="exp">Experience</a>
+                        <a href ="#portfolio" class="port">Portfolio</a>
+                    </p>
                 </div>
                     
                 <div class="img">
@@ -73,7 +77,44 @@
         </div>
 
         <div class="content" id="education">
-            <h1>EDUCATION</h1>
+            <h1 class="flex-center">EDUCATION</h1>
+            <p class="flex-center">Through the years in my life I experience knowledge that really strengthen my<br /> skills and my confidence to reach my goals</p>
+            <!-- Schools -->
+            <div class="polaroid">
+                <p class="logo"><img src="{{ asset('assets/pics/TMES.png')}}"></p>
+                <div class="container">
+                    <p><b>School Name:</b> Teodora Moscoso Elementary School</p>
+                    <p><b>Year Started:</b> 2011</p>
+                    <p><b>Year Graduated:</b> 2012</p>
+                </div>
+            </div>
+
+            <div class="polaroid">
+                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
+                <div class="container">
+                    <p><b>School Name:</b> Ateneo de Naga Junior High School</p>
+                    <p><b>Year Started:</b> 2012</p>
+                    <p><b>Year Graduated:</b> 2016</p>
+                </div>
+            </div>
+
+            <div class="polaroid">
+                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
+                <div class="container">
+                    <p><b>School Name:</b> Ateneo de Naga Senior High School</p>
+                    <p><b>Year Started:</b> 2016</p>
+                    <p><b>Year Graduated:</b> 2018</p>
+                </div>
+            </div>
+
+            <div class="polaroid">
+                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
+                <div class="container">
+                    <p><b>School Name:</b> Ateneo de Naga University</p>
+                    <p><b>Year Started:</b> 2018</p>
+                    <p><b>Year Graduated:</b> 2022</p>
+                </div>
+            </div>
         </div>
 
         <div class="content" id="experience">
