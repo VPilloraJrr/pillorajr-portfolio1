@@ -125,10 +125,48 @@ p.links a.contact:hover {
     background: rgb(201, 221, 221);
     border: 1px solid white;
 }
-#education{
+
+#skill{
     height:75%;
     padding-top: 25px;
 }
+
+#skill div.polaroid {
+    width: 10%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    float: left;
+    margin-left:10px;
+    
+}
+
+#skill div.polaroid#first{
+    margin-left: 183px;
+}
+
+#skill div.polaroid#eight{
+    margin-left: 450px;
+}
+
+#skill div.container {
+    text-align: center;
+    
+}
+#skill p.logo img {
+    width: 50%;
+    padding-left: 25%;
+    padding-top: 10px;
+    align-content: center;
+    justify-content: center;
+}
+
+#education{
+    height:75%;
+    padding-top: 25px;
+    background: #f7f9fb;
+}
+
 #education div.polaroid {
     width: 20%;
     background-color: white;
@@ -138,7 +176,15 @@ p.links a.contact:hover {
     margin-left:50px;
     margin-top:50px;
 }
-  
+
+#education div.polaroid:hover{
+    border: solid 1px rgb(134, 127, 127);
+    border-radius: 15px;
+    width:23%;
+}
+.first {
+    padding-bottom: 9px;
+}
 #education div.container {
     text-align: center;
     padding: 10px 20px;
@@ -150,10 +196,47 @@ p.links a.contact:hover {
     align-content: center;
     justify-content: center;
 }
+#experience{
+    
+    padding-top: 25px;
+    height:50%;
+    display:block;
+    background: #f7f9fb;
+    border: 1px solid #f7f9fb;
+}
+#experience div.text-container{
+    width:25%;
+    align-items: center;
+    float: left;
+    margin-left: 30px;
+    padding:10px;
+}
+
+div.time{
+    color: #0b36a8;
+}
+
+#portfolio{
+    
+    padding-top: 25px;
+    height:100%;
+    display:block;
+    background: #f7f9fb;
+    border: 1px solid #f7f9fb;
+}
+
+#portfolio div.text-container div.image-container p img{
+    width: 80%;
+    padding-left: 10%;
+}
+
+#portfolio div.text-container{
+    padding-bottom: 50px;
+}
 
 #contact{
-    background: rgb(201, 221, 221);
-    border:solid rgb(201, 221, 221);
+    background: #f7f9fb;
+    border:solid #f7f9fb;
     padding-top: 50px;
     padding-bottom: 50px;
 }
