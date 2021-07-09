@@ -7,6 +7,15 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function uploadAvatar(Request $request)
+    {
+        if ($request->hasFile('image')) {
+           User::uploadAvatar($request->image);
+           return redirect()->back()->with('message', 'Image Uploaded.');
+        }
+
+        return redirect()->back()->with('error', 'Image not Uploaded.');
+    }
     public function index()
     {
         $data = [
@@ -40,6 +49,6 @@ class UserController extends Controller
 
     // $users = DB::select('select * from users');
         //return $users;
-        return view('home');
+        return view('dashboard.home');
     }
 }

@@ -32,7 +32,7 @@
                     <a href="#portfolio">Portfolio</a>
                     <a href="#contact">Contact</a>
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{ url('dashboard/home') }}" class="text-sm text-gray-700 underline">Log in</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
                     @endauth

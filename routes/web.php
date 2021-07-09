@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/user', 'UserController@index');
+Route::post('/upload', 'UserController@uploadAvatar');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard/home', 'HomeController@index')->name('home');
+Route::get('/dashboard/skill', 'DashboardController@skill');
+Route::get('/dashboard/education', 'DashboardController@education');
+Route::get('/dashboard/experience', 'DashboardController@experience');
+Route::get('/dashboard/portfolio', 'DashboardController@portfolio');
+Route::get('/dashboard/contact', 'DashboardController@contact');
+
+

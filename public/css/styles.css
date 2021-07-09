@@ -201,7 +201,7 @@ p.links a.contact:hover {
     padding-top: 25px;
     height:50%;
     display:block;
-    background: #f7f9fb;
+    background: white;
     border: 1px solid #f7f9fb;
 }
 #experience div.text-container{
@@ -219,7 +219,7 @@ div.time{
 #portfolio{
     
     padding-top: 25px;
-    height:100%;
+    height:285%;
     display:block;
     background: #f7f9fb;
     border: 1px solid #f7f9fb;
@@ -235,9 +235,9 @@ div.time{
 }
 
 #contact{
-    background: #f7f9fb;
-    border:solid #f7f9fb;
-    padding-top: 50px;
+    background: white;
+    border:solid white;
+    padding-top: 10px;
     padding-bottom: 50px;
 }
 #contact p a {
