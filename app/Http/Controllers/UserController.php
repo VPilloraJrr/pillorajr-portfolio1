@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $data = [
             'name' => 'Jr',
-            'email' => 'vpillorajr@gmail.com',
+            'email' => 'vpillorajr@gbox.adnu.edu.ph',
             'password' => 'jehp0828'    
         ];
 

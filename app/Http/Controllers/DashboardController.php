@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Education;
 
 class DashboardController extends Controller
 {
@@ -13,7 +15,8 @@ class DashboardController extends Controller
 
     public function education()
     {
-            return view('dashboard.education');
+        $data = DB::table('educations')->get();
+        return view('dashboard.education', ['data'=>$data]);
     }
     
     public function experience()

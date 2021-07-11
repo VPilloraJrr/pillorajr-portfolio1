@@ -31,3 +31,10 @@ a#active{
     border-bottom-left-radius: 50%;
     background: #f7f9fb;
 }
+td, th{
+    padding:10px;
+    border: 1px solid;
+}
+th.even, td.even{
+    background: #f7f9fb;
+}

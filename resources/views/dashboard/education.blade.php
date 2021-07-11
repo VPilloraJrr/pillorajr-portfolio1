@@ -28,7 +28,26 @@
                 <div class="card-header">{{ __('EDUCATION') }}</div>
 
                 <div class="card-body">
-                    ALL SCHOOLS
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th class="even">School Name</th>
+                            <th>Year Started</th>
+                            <th class="even">Year Graduated</th>
+                        </tr>
+                        @forelse($data as $key => $d)
+
+                        <tr>
+                            <td>{{ $d->id }}</td>
+                            <td class="even">{{ $d->school_name }}</td>
+                            <td>{{ $d->year_started }}</td>
+                            <td class="even">{{ $d->year_graduated }}</td>
+                        </tr> 
+                            
+                        @empty
+                        <tr><td>No record(s) found</td></tr>
+                        @endforelse ($data as $key => $d) 
+                    </table>
                 </div>
             </div>
         </div>

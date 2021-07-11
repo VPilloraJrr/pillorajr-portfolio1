@@ -28,3 +28,5 @@ Route::get('/dashboard/portfolio', 'DashboardController@portfolio');
 Route::get('/dashboard/contact', 'DashboardController@contact');
 
 
+Route::get('/education', 'DashboardController@education');
+
