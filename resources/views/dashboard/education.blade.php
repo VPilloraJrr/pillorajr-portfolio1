@@ -34,6 +34,7 @@
                             <th class="even">School Name</th>
                             <th>Year Started</th>
                             <th class="even">Year Graduated</th>
+                            <th>School Logo</th>
                         </tr>
                         @forelse($data as $key => $d)
 
@@ -42,6 +43,7 @@
                             <td class="even">{{ $d->school_name }}</td>
                             <td>{{ $d->year_started }}</td>
                             <td class="even">{{ $d->year_graduated }}</td>
+                            <td>{{ $d->logo }}</td>
                         </tr> 
                             
                         @empty

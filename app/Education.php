@@ -12,5 +12,6 @@ class Education extends Model
         'school_name',
         'year_started',
         'year_graduated',
+        'logo',
     ];
 }

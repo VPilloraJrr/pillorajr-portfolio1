@@ -10,5 +10,6 @@ class Portfolio extends Model
         'project_name',
         'client',
         'description',
+        'screenshot',
     ];
 }

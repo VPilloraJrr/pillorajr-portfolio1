@@ -18,6 +18,7 @@ class CreatePortfoliosTable extends Migration
             $table->string('project_name');
             $table->string('client')->nullable();
             $table->string('description');
+            $table->string('screenshot')->nullable();
             $table->timestamps();
         });
     }

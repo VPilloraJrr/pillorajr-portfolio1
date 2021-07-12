@@ -18,6 +18,7 @@ class CreateEducationsTable extends Migration
             $table->string('school_name');
             $table->integer('year_started');
             $table->integer('year_graduated')->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

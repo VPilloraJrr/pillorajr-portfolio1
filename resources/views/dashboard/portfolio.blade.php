@@ -33,7 +33,8 @@
                             <th>ID</th>
                             <th class="even">Project Name</th>
                             <th>Client</th>
-                            <th>Description</th>
+                            <th class="even">Description</th>
+                            <th>Screenshot</th>
                         </tr>
                         @forelse($data as $key => $d)
 
@@ -41,7 +42,8 @@
                             <td>{{ $d->id }}</td>
                             <td class="even">{{ $d->project_name }}</td>
                             <td>{{ $d->client }}</td>
-                            <td>{{ $d->description }}</td>
+                            <td class="even">{{ $d->description }}</td>
+                            <td>{{ $d->screenshot }}</td>
                         </tr> 
                             
                         @empty
