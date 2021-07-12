@@ -43,7 +43,7 @@
                             <td class="even">{{ $d->position_name }}</td>
                             <td>{{ $d->description }}</td>
                             <td>{{ $d->year_started }}</td>
-                            <td>{{ $d->resignee }}</td>
+                            <td>{{ $d->year_resigned }}</td>
                         </tr> 
                             
                         @empty

@@ -76,66 +76,18 @@
             <h1 class="flex-center">SKILLS</h1>
             <p class="flex-center">I am currently living in Naga City. I am studying Bachelor of Science in Computer Science and will graduate in the year 2022. I am practicing and improving my skills.</p>
             <br />
-            <div class="polaroid" id="first">
-                <p class="logo"><img src="{{ asset('assets/pics/HTML.png')}}"></p>
+
+            @foreach($data as $key => $d)
+            <div class="polaroid"> 
+                
+                <!--<p class="logo"><img src="{{ asset('assets/pics/HTML.png')}}"></p>-->
                 <div class="container">
-                    <p>HTML</p>   
+                    <p>{{ $d->skill_name }}</p>
+                    <label for="progress">{{ $d->skill_name }} progress:</label>
+                    <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
                 </div>
             </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/CSS.png')}}"></p>
-                <div class="container">
-                    <p>CSS</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/JS.png')}}"></p>
-                <div class="container">
-                    <p>JavaScript</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/PHP.png')}}"></p>
-                <div class="container">
-                    <p>PHP</p>   
-                </div>
-            </div>
-            <div class="polaroid" id="fifth">
-                <p class="logo"><img src="{{ asset('assets/pics/XAMPP.png')}}"></p>
-                <div class="container">
-                    <p>Xampp</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <br /><p class="logo"><img src="{{ asset('assets/pics/GHUB.png')}}"></p>
-                <div class="container">
-                    <p>GitHub</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/GLAB.png')}}"></p>
-                <div class="container">
-                    <p style="padding-bottom: 8px">GitLab</p>   
-                </div>
-            </div>
-            <div class="polaroid" id="eight">
-                <p class="logo"><img src="{{ asset('assets/pics/CPLUS.png')}}"></p>
-                <div class="container">
-                    <p>C++</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/BSTRAP.png')}}"></p>
-                <div class="container">
-                    <p>Bootstrap</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/JAVA.png')}}"></p>
-                <div class="container">
-                    <p>Java</p>   
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="content" id="education">
@@ -233,7 +185,7 @@
         <div class="content" id="contact">
             <h1 class="flex-center">Contact Information</h1>
             <p class="flex-center">For any type of online project please don't hesitate to get in touch with me. The fastest way is to <br />send me your message using the following email <a href="#">vpillorajr@gbox.adnu.edu.ph</a></p>
-            <form method="post" action="/send"  class="flex-center">
+            <form method="post" action="/dashboard/contact"  class="flex-center">
                 @csrf
                 <input type="text" name="name" placeholder="Name"/>
                 <input type="text" name="email" placeholder="Email"/>

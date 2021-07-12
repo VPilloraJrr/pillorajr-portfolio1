@@ -41,7 +41,7 @@
                             <td>{{ $d->id }}</td>
                             <td class="even">{{ $d->name }}</td>
                             <td>{{ $d->email }}</td>
-                            <td>{{ $d->message }}</td>
+                            <td>{{ $d->content }}</td>
                         </tr> 
                             
                         @empty

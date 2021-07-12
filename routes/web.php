@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', function () {
+    $data = DB::table('skills')->get();
+    return view('welcome', ['data'=>$data]);
+});
+
 Route::get('/user', 'UserController@index');
 Route::post('/upload', 'UserController@uploadAvatar');
 Auth::routes();
@@ -30,4 +36,6 @@ Route::get('/dashboard/contact', 'DashboardController@contact');
 
 Route::get('/education', 'DashboardController@education');
 Route::get('/skill', 'DashboardController@skill');
+Route::post('/dashboard/contact', 'DashboardController@store');
+
 

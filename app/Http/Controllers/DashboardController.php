@@ -99,6 +99,31 @@ class DashboardController extends Controller
     
     public function experience()
     {
+        $data = [
+        [
+                'position_name' => 'Lead Web Developer',
+                'description' => 'Beautiful project for a major digital agency',
+                'year_started' => '2018',
+                'year_resigned' => '2019',
+        ],
+        [
+                'position_name' => 'Senior Web Designer',
+                'description' => 'Inhouse web designer for ecommerce firm',
+                'year_started' => '2017',
+                'year_resigned' => '2018',
+        ],
+        [
+                'position_name' => 'Junior Web Designer',
+                'description' => 'Junior web designer for small web agency',
+                'year_started' => '2016',
+                'year_resigned' => '2017',
+        ],[
+                'position_name' => 'Freelance Web Developer',
+                'description' => 'Working happily on my own web projects',
+                'year_started' => '2019',
+        ],];
+
+        //Experience::insert($data);
         $data = DB::table('experiences')->get();
         return view('dashboard.experience', ['data'=>$data]);
     }
@@ -113,5 +138,10 @@ class DashboardController extends Controller
     {
         $data = DB::table('contacts')->get();
         return view('dashboard.contact', ['data'=>$data]);
+    }
+
+    public function store (Request $request){
+        Contact::create($request->all());
+        return redirect()->back()->with('message', 'Message Created Succesfully');
     }
 }
