@@ -28,7 +28,24 @@
                 <div class="card-header">{{ __('Skills') }}</div>
 
                 <div class="card-body">
-                    ALL SKILLS
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th class="even">Name</th>
+                            <th>Percentage of Knowledge</th>
+                        </tr>
+                        @forelse($data as $key => $d)
+
+                        <tr>
+                            <td>{{ $d->id }}</td>
+                            <td class="even">{{ $d->skill_name }}</td>
+                            <td>{{ $d->percent }}</td>
+                        </tr> 
+                            
+                        @empty
+                        <tr><td>No record(s) found</td></tr>
+                        @endforelse ($data as $key => $d) 
+                    </table>
                 </div>
             </div>
         </div>

@@ -28,7 +28,28 @@
                 <div class="card-header">{{ __('EXPERIENCE') }}</div>
 
                 <div class="card-body">
-                    ALL EXPERIENCE
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th class="even">Position</th>
+                            <th>Description</th>
+                            <th>Year Started</th>
+                            <th>Year Resigned</th>
+                        </tr>
+                        @forelse($data as $key => $d)
+
+                        <tr>
+                            <td>{{ $d->id }}</td>
+                            <td class="even">{{ $d->position_name }}</td>
+                            <td>{{ $d->description }}</td>
+                            <td>{{ $d->year_started }}</td>
+                            <td>{{ $d->resignee }}</td>
+                        </tr> 
+                            
+                        @empty
+                        <tr><td>No record(s) found</td></tr>
+                        @endforelse ($data as $key => $d) 
+                    </table>
                 </div>
             </div>
         </div>

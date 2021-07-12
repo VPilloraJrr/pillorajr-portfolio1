@@ -28,7 +28,26 @@
                 <div class="card-header">{{ __('CONTACT') }}</div>
 
                 <div class="card-body">
-                    ALL CONTACT
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th class="even">Name</th>
+                            <th>Email</th>
+                            <th>Message / Project Information</th>
+                        </tr>
+                        @forelse($data as $key => $d)
+
+                        <tr>
+                            <td>{{ $d->id }}</td>
+                            <td class="even">{{ $d->name }}</td>
+                            <td>{{ $d->email }}</td>
+                            <td>{{ $d->message }}</td>
+                        </tr> 
+                            
+                        @empty
+                        <tr><td>No record(s) found</td></tr>
+                        @endforelse ($data as $key => $d) 
+                    </table>
                 </div>
             </div>
         </div>

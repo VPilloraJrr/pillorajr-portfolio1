@@ -28,7 +28,26 @@
                 <div class="card-header">{{ __('PORTFOLIO') }}</div>
 
                 <div class="card-body">
-                    ALL PORTFOLIO
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th class="even">Project Name</th>
+                            <th>Client</th>
+                            <th>Description</th>
+                        </tr>
+                        @forelse($data as $key => $d)
+
+                        <tr>
+                            <td>{{ $d->id }}</td>
+                            <td class="even">{{ $d->project_name }}</td>
+                            <td>{{ $d->client }}</td>
+                            <td>{{ $d->description }}</td>
+                        </tr> 
+                            
+                        @empty
+                        <tr><td>No record(s) found</td></tr>
+                        @endforelse ($data as $key => $d) 
+                    </table>
                 </div>
             </div>
         </div>

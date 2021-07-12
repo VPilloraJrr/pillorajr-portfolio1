@@ -29,4 +29,5 @@ Route::get('/dashboard/contact', 'DashboardController@contact');
 
 
 Route::get('/education', 'DashboardController@education');
+Route::get('/skill', 'DashboardController@skill');
 
