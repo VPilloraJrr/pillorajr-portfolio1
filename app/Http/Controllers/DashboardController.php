@@ -144,4 +144,24 @@ class DashboardController extends Controller
         Contact::create($request->all());
         return redirect()->back()->with('message', 'Message Created Succesfully');
     }
+
+    public function storeSkill (Request $request){
+        Skill::create($request->all());
+        return redirect()->back()->with('message', 'Message Created Succesfully');
+    }
+
+    public function storeEducation (Request $request){
+        Education::create($request->all());
+        return redirect()->back()->with('message', 'Message Created Succesfully');
+    }
+
+    public function storeExperience (Request $request){
+        Experience::create($request->all());
+        return redirect()->back()->with('message', 'Message Created Succesfully');
+    }
+
+    public function storePortfolio (Request $request){
+        Portfolio::create($request->all());
+        return redirect()->back()->with('message', 'Message Created Succesfully');
+    }
 }

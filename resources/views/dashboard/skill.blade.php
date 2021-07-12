@@ -28,7 +28,7 @@
                 <div class="card-header">{{ __('Skills') }}</div>
 
                 <div class="card-body">
-                    <table>
+                    <table class="row justify-content-center">
                         <tr>
                             <th>ID</th>
                             <th class="even">Name</th>
@@ -50,6 +50,20 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-header">{{ __('Create New Data') }}</div>
+                <div class="card-body">
+                    <form method="post" action="/dashboard/skill" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="skill_name" placeholder="Name"/>
+                        <input type="text" name="percent" placeholder="Percentage"/>
+                        <input type="file" name="logo" />
+                        <button type="submit" class="submit">Create</button>
+                    </form>
+                </div>
         </div>
     </div>
 </div>

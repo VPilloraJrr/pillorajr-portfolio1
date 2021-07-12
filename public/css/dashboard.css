@@ -15,7 +15,9 @@ a.list-group-item.list-group-item-action.list-group-item-light.p-3{
 }
 div.row{
     margin-left: 10%;
+    margin-top: 10px;
 }
+
 
 div.profile img{
     width: 90%;

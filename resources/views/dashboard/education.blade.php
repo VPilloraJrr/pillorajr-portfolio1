@@ -54,5 +54,21 @@
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-header">{{ __('Create New Data') }}</div>
+                <div class="card-body">
+                    <form method="post" action="/dashboard/skill" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="school_name" placeholder="Name"/>
+                        <input type="text" name="year_started" placeholder="Year Started"/>
+                        <input type="text" name="year_graduated" placeholder="Year Graduated"/>
+                        <input type="file" name="logo" />
+                        <button type="submit" class="submit">Create</button>
+                    </form>
+                </div>
+        </div>
+    </div>
 </div>
 @endsection
