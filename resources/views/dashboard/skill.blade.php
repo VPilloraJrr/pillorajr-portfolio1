@@ -23,7 +23,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div>
             <div class="card">
                 <div class="card-header">{{ __('Skills') }}</div>
 
@@ -32,7 +32,7 @@
                         <tr>
                             <th>ID</th>
                             <th class="even">Name</th>
-                            <th>Percentage of Knowledge</th>
+                            <th>Percentage</th>
                             <th class="even">Logo</th>
                         </tr>
                         @forelse($data as $key => $d)
@@ -41,7 +41,18 @@
                             <td>{{ $d->id }}</td>
                             <td class="even">{{ $d->skill_name }}</td>
                             <td>{{ $d->percent }}</td>
-                            <td class="even">{{ $d->logo }}</td>
+
+                        @if($d->logo)
+                        <td class="even"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></td>
+                        @else
+                        <td class="even">
+                            <form action="/skill/upload" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="logo" />
+                                <input type="submit" value="Upload" />
+                            </form>
+                        </td>
+                        @endif
                         </tr> 
                             
                         @empty

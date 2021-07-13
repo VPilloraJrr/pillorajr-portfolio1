@@ -3,7 +3,7 @@ div.container {
 }
 div.container div#sidebar-wrapper{
     margin-right:90%;
-    margin-left: 5px;
+    margin-left:0;
     padding-left: 10px;
     padding-bottom: 15px;
     position:fixed;
@@ -17,7 +17,6 @@ div.row{
     margin-left: 10%;
     margin-top: 10px;
 }
-
 
 div.profile img{
     width: 90%;

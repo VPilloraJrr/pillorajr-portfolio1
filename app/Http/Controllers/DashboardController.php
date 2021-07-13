@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Education;
 use App\Skill;
@@ -67,8 +68,8 @@ class DashboardController extends Controller
     {
         $data = [[
                 'school_name' => 'Teodora Moscos Elementary School',
-                'year_started' => '2012' ,
-                'year_graduated' => '2016',
+                'year_started' => '2011' ,
+                'year_graduated' => '2012',
         ],
         
         [
@@ -117,10 +118,6 @@ class DashboardController extends Controller
                 'description' => 'Junior web designer for small web agency',
                 'year_started' => '2016',
                 'year_resigned' => '2017',
-        ],[
-                'position_name' => 'Freelance Web Developer',
-                'description' => 'Working happily on my own web projects',
-                'year_started' => '2019',
         ],];
 
         //Experience::insert($data);
@@ -164,4 +161,5 @@ class DashboardController extends Controller
         Portfolio::create($request->all());
         return redirect()->back()->with('message', 'Message Created Succesfully');
     }
+
 }

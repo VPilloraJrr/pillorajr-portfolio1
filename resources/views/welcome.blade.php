@@ -78,15 +78,19 @@
             <br />
 
             @foreach($data as $key => $d)
-            <div class="polaroid"> 
-                
-                <!--<p class="logo"><img src="{{ asset('assets/pics/HTML.png')}}"></p>-->
-                <div class="container">
-                    <p>{{ $d->skill_name }}</p>
-                    <label for="progress">{{ $d->skill_name }} progress:</label>
-                    <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
+                <div class="polaroid"> 
+                    
+                    @if($d->logo)
+                        <p class="logo"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></p>
+                    @else
+                        <p class="logo"><img src="{{ asset('assets/pics/default.jpg')}}"></p>
+                    @endif 
+                    <div class="container">
+                        <p>{{ $d->skill_name }}</p>
+                        <label for="progress">{{ $d->skill_name }} progress:</label>
+                        <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
 
@@ -94,63 +98,30 @@
             <h1 class="flex-center">EDUCATION</h1>
             <p class="flex-center">Through the years in my life I experience knowledge that really strengthen my<br /> skills and my confidence to reach my goals.</p>
             <!-- Schools -->
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/TMES.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Teodora Moscoso Elementary School</p>
-                    <p><b>Year Started:</b> 2011</p>
-                    <p class="first"><b>Year Graduated:</b> 2012</p>
+            @foreach(DB::table('educations')->get() as $key => $ed)
+                <div class="polaroid">
+                    @if($ed->logo)
+                        <p class="logo"><img src = "{{ asset('/storage/images/'.$ed->logo )}}" alt="logo" class="logo"></p>
+                    @else
+                        <p class="logo"><img src="{{ asset('assets/pics/default.jpg')}}"></p>
+                    @endif 
+                    <div class="container">
+                        <p><b>School Name:</b> {{ $ed->school_name }}</p>
+                        <p><b>Year Started:</b> {{ $ed->year_started }}</p>
+                        <p class="first"><b>Year Graduated:</b> {{ $ed->year_graduated }}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Ateneo de Naga Junior High School</p>
-                    <p><b>Year Started:</b> 2012</p>
-                    <p><b>Year Graduated:</b> 2016</p>
-                </div>
-            </div>
-
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Ateneo de Naga Senior High School</p>
-                    <p><b>Year Started:</b> 2016</p>
-                    <p><b>Year Graduated:</b> 2018</p>
-                </div>
-            </div>
-
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Ateneo de Naga University</p>
-                    <p><b>Year Started:</b> 2018</p>
-                    <p><b>Year Graduated:</b> 2022</p>
-                </div>
-            </div>
+            @endforeach
         </div>
-
         <div class="content" id="experience">
             <h1 class="flex-center">EXPERIENCE</h1>
-            <div class="text-container ">
-                <div class="time"><b>2019 - PRESENT</b></div>
-                <h3><b>Freelance Web Developer</b></h3>
-                <p>Working happily on my own web projects</p>
-                <div class="time"><b>2018 - 2019</b></div>
-                <h3><b>Lead Web Developer</b></h3>
-                <p>Beautiful project for a major digital agency</p>
-            </div> <!-- end of text-container -->
-            
-            <div class="text-container">
-                <div class="time"><b>2017 - 2018</b></div>
-                <h3><b>Senior Web Designer</b></h3>
-                <p>Inhouse web designer for ecommerce firm</p>
-                <div class="time"><b>2016 - 2017</b></div>
-                <h3><b>Junior Web Designer</b></h3>
-                <p>Junior web designer for small web agency</p>
-            </div> <!-- end of text-container -->
-            
+            @foreach(DB::table('experiences')->get() as $key => $exp)
+                <div class="text-container ">
+                    <div class="time"><b>{{ $exp->year_started }} - {{ $exp->year_resigned }}</b></div>
+                    <h3><b>{{ $exp->position_name }}</b></h3>
+                    <p>{{ $exp->description }}</p>
+                </div>
+            @endforeach
         </div>
         
 

@@ -34,13 +34,13 @@ Route::get('/dashboard/portfolio', 'DashboardController@portfolio');
 Route::get('/dashboard/contact', 'DashboardController@contact');
 
 
-Route::get('/education', 'DashboardController@education');
-Route::get('/skill', 'DashboardController@skill');
 Route::post('/dashboard/contact', 'DashboardController@store');
 Route::post('/dashboard/skill', 'DashboardController@storeSkill');
 Route::post('/dashboard/education', 'DashboardController@storeEducation');
 Route::post('/dashboard/experience', 'DashboardController@storeExperience');
 Route::post('/dashboard/portfolio', 'DashboardController@storePortfolio');
+
+Route::post('/skill/upload', 'DashboardController@uploadLogoSkill');
 
 
 
