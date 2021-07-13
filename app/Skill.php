@@ -13,4 +13,5 @@ class Skill extends Model
         'percent',
         'logo',
     ];
+
 }

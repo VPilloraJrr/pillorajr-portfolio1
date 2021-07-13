@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use App\Education;
 use App\Skill;
@@ -118,6 +119,10 @@ class DashboardController extends Controller
                 'description' => 'Junior web designer for small web agency',
                 'year_started' => '2016',
                 'year_resigned' => '2017',
+        ],[
+                'position_name' => 'Freelance Web Developer',
+                'description' => 'Working happily on my own web projects',
+                'year_started' => '2019',
         ],];
 
         //Experience::insert($data);
@@ -143,12 +148,29 @@ class DashboardController extends Controller
     }
 
     public function storeSkill (Request $request){
-        Skill::create($request->all());
+        $logos = $request->file('logo');
+        $filename = $logos->getClientOriginalName();
+        $logos->storeAs('images', $filename, 'public'); 
+
+        $skill = new Skill();
+        $skill->skill_name = $request->skill_name;
+        $skill->percent = $request->percent;
+        $skill->logo = $logos->getClientOriginalName();
+        $skill->save();
         return redirect()->back()->with('message', 'Message Created Succesfully');
     }
 
     public function storeEducation (Request $request){
-        Education::create($request->all());
+        $educ = $request->file('logo');
+        $filename = $educ->getClientOriginalName();
+        $educ->storeAs('images', $filename, 'public'); 
+
+        $educ = new Education();
+        $educ->school_name = $request->school_name;
+        $educ->year_started = $request->year_started;
+        $educ->year_graduated = $request->year_graduated;
+        $educ->logo = $educ->getClientOriginalName();
+        $educ->save();
         return redirect()->back()->with('message', 'Message Created Succesfully');
     }
 
@@ -158,8 +180,16 @@ class DashboardController extends Controller
     }
 
     public function storePortfolio (Request $request){
-        Portfolio::create($request->all());
+        $screenshot = $request->file('screenshot');
+        $filename = $screenshot->getClientOriginalName();
+        $screenshot->storeAs('images', $filename, 'public'); 
+
+        $portfolio = new Portfolio();
+        $portfolio->project_name = $request->project_name;
+        $portfolio->client = $request->client;
+        $portfolio->description = $request->description;
+        $portfolio->screenshot = $screenshot->getClientOriginalName();
+        $portfolio->save();
         return redirect()->back()->with('message', 'Message Created Succesfully');
     }
-
 }

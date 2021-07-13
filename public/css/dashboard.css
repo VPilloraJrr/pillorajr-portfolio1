@@ -17,7 +17,9 @@ div.row{
     margin-left: 10%;
     margin-top: 10px;
 }
-
+.col-md-8{
+    padding-left:100px;
+}
 div.profile img{
     width: 90%;
     margin-top:30px;
@@ -33,9 +35,15 @@ a#active{
     background: #f7f9fb;
 }
 td, th{
-    padding:10px;
+    padding: 30px;
     border: 1px solid;
+    text-align: center;
 }
 th.even, td.even{
     background: #f7f9fb;
+    
+}
+
+.logo, .screenshot{
+    width: 100px;
 }

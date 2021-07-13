@@ -23,14 +23,14 @@
                 <div class="top-left links">
                     <a href="{{ url('/') }}"><img src="{{ asset('assets/pics/VP.png') }}"></a> 
                 </div> 
-                <div class="top-right links">
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skill">Skills</a>
-                    <a href="#education">Education</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#contact">Contact</a>
+                <div class="top-right links" id="btns">
+                    <a href="{{ url('/') }}" class="btn active">Home</a>
+                    <a href="#about" class="btn">About</a>
+                    <a href="#skill" class="btn">Skills</a>
+                    <a href="#education" class="btn">Education</a>
+                    <a href="#experience" class="btn">Experience</a>
+                    <a href="#portfolio" class="btn">Portfolio</a>
+                    <a href="#contact" class="btn">Contact</a>
                     @auth
                         <a href="{{ url('dashboard/home') }}" class="text-sm text-gray-700 underline">Log in</a>
                     @else
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="content" id="about">
+        <div class="content col-md-10" id="about">
             <div class="info">
                 <div class="inform">
                     <h2>Hi, I'm Vicente G. Pillora. Jr.,</h2>
@@ -79,22 +79,23 @@
 
             @foreach($data as $key => $d)
                 <div class="polaroid"> 
-                    
-                    @if($d->logo)
-                        <p class="logo"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></p>
-                    @else
-                        <p class="logo"><img src="{{ asset('assets/pics/default.jpg')}}"></p>
-                    @endif 
-                    <div class="container">
-                        <p>{{ $d->skill_name }}</p>
-                        <label for="progress">{{ $d->skill_name }} progress:</label>
-                        <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
+                    <div class="col-sm-20">
+                        @if($d->logo)
+                            <p class="logo"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></p>
+                        @else
+                            <p class="logo"><img src="{{ asset('assets/pics/default.jpg')}}"></p>
+                        @endif 
+                        <div class="container">
+                            <p>{{ $d->skill_name }}</p>
+                            <label for="progress">{{ $d->skill_name }} progress:</label>
+                            <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
 
-        <div class="content" id="education">
+        <div class="content cols-md-4" id="education">
             <h1 class="flex-center">EDUCATION</h1>
             <p class="flex-center">Through the years in my life I experience knowledge that really strengthen my<br /> skills and my confidence to reach my goals.</p>
             <!-- Schools -->
@@ -164,5 +165,17 @@
                 <button type="submit" class="submit">Send Email</button>
             </form>
         </div>
+        <script>
+            // Add active class to the current button (highlight it)
+            var header = document.getElementById("btns");
+            var bt = header.getElementsByClassName("btn");
+            for (var i = 0; i < bt.length; i++) {
+              bt[i].addEventListener("click", function() {
+              var current = document.getElementsByClassName("active");
+              current[0].className = current[0].className.replace(" active", "");
+              this.className += " active";
+              });
+            }
+            </script>
     </body>
 </html>

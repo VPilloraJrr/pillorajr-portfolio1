@@ -23,7 +23,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div>
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Skills') }}</div>
 
@@ -46,11 +46,7 @@
                         <td class="even"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></td>
                         @else
                         <td class="even">
-                            <form action="/skill/upload" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" name="logo" />
-                                <input type="submit" value="Upload" />
-                            </form>
+                           
                         </td>
                         @endif
                         </tr> 
