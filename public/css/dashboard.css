@@ -35,8 +35,10 @@ a#active{
     background: #f7f9fb;
 }
 td, th{
-    padding: 30px;
-    border: 1px solid;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 1px solid;
     text-align: center;
 }
 th.even, td.even{
@@ -44,6 +46,11 @@ th.even, td.even{
     
 }
 
+td.actions a{
+    border: 1px solid black;
+    text-decoration: none;
+    color:black;
+}
 .logo, .screenshot{
-    width: 100px;
+    width: 50px;
 }

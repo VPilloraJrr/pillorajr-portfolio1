@@ -23,7 +23,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('EDUCATION') }}</div>
 
@@ -35,6 +35,7 @@
                             <th>Year Started</th>
                             <th class="even">Year Graduated</th>
                             <th>School Logo</th>
+                            <th class="even">Actions</th>
                         </tr>
                         @forelse($data as $key => $d)
 
@@ -43,7 +44,17 @@
                             <td class="even">{{ $d->school_name }}</td>
                             <td>{{ $d->year_started }}</td>
                             <td class="even">{{ $d->year_graduated }}</td>
-                            <td>{{ $d->logo }}</td>
+                            @if($d->logo)
+                                <td >
+                                    <img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo">
+                                </td>
+                            @else
+                                <td></td>
+                            @endif
+                            <td class="even actions">
+                                <a href='education/edit/{{ $d->id }}'>Edit</a>
+                                <a href='education/delete/{{ $d->id }}'>Delete</a>
+                            </td>
                         </tr> 
                             
                         @empty

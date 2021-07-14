@@ -23,7 +23,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('CONTACT') }}</div>
 
@@ -33,7 +33,8 @@
                             <th>ID</th>
                             <th class="even">Name</th>
                             <th>Email</th>
-                            <th>Message / Project Information</th>
+                            <th class="even">Message / Project Information</th>
+                            <th>Actions</th>
                         </tr>
                         @forelse($data as $key => $d)
 
@@ -41,12 +42,14 @@
                             <td>{{ $d->id }}</td>
                             <td class="even">{{ $d->name }}</td>
                             <td>{{ $d->email }}</td>
-                            <td>{{ $d->content }}</td>
+                            <td class="even">{{ $d->content }}</td>
+                            <td class="actions"><a href='experience/delete/{{ $d->id }}'>Delete</a></td>
                         </tr> 
                             
                         @empty
                         <tr><td>No record(s) found</td></tr>
-                        @endforelse ($data as $key => $d) 
+                        @endforelse ($data as $key => $d)
+
                     </table>
                 </div>
             </div>

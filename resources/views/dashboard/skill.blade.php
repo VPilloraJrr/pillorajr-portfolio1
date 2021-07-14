@@ -28,12 +28,14 @@
                 <div class="card-header">{{ __('Skills') }}</div>
 
                 <div class="card-body">
+                    <x-alert />
                     <table class="row justify-content-center">
                         <tr>
                             <th>ID</th>
                             <th class="even">Name</th>
                             <th>Percentage</th>
                             <th class="even">Logo</th>
+                            <th>Actions</th>
                         </tr>
                         @forelse($data as $key => $d)
 
@@ -41,14 +43,18 @@
                             <td>{{ $d->id }}</td>
                             <td class="even">{{ $d->skill_name }}</td>
                             <td>{{ $d->percent }}</td>
-
-                        @if($d->logo)
-                        <td class="even"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></td>
-                        @else
-                        <td class="even">
-                           
-                        </td>
-                        @endif
+                            @if($d->logo)
+                            <td class="even">
+                                <img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo">
+                            </td>
+                            @else
+                            <td class="even"></td>
+                            @endif
+                            
+                            <td class="actions">
+                                <a href='skill/edit/{{ $d->id }}'>Edit</a>
+                                <a href='skill/delete/{{ $d->id }}'>Delete</a>
+                            </td>
                         </tr> 
                             
                         @empty

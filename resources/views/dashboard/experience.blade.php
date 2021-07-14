@@ -23,7 +23,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('EXPERIENCE') }}</div>
 
@@ -33,8 +33,10 @@
                             <th>ID</th>
                             <th class="even">Position</th>
                             <th>Description</th>
-                            <th>Year Started</th>
+                            <th class="even">Year Started</th>
                             <th>Year Resigned</th>
+                            <th class="even">Actions</th>
+
                         </tr>
                         @forelse($data as $key => $d)
 
@@ -42,8 +44,12 @@
                             <td>{{ $d->id }}</td>
                             <td class="even">{{ $d->position_name }}</td>
                             <td>{{ $d->description }}</td>
-                            <td>{{ $d->year_started }}</td>
+                            <td class="even">{{ $d->year_started }}</td>
                             <td>{{ $d->year_resigned }}</td>
+                            <td class="even actions">
+                                <a href='experience/edit/{{ $d->id }}'>Edit</a>
+                                <a href='experience/delete/{{ $d->id }}'>Delete</a>
+                            </td>
                         </tr> 
                             
                         @empty
