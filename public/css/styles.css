@@ -127,26 +127,19 @@ p.links a.contact:hover {
 }
 
 #skill{
-    height:75%;
+    height:100vh;
     padding-top: 25px;
 }
 
 #skill div.polaroid {
-    width: 10%;
+    width: 15%;
+    height: 25%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 25px;
     float: left;
     margin-left:10px;
     
-}
-
-#skill div.polaroid#first{
-    margin-left: 183px;
-}
-
-#skill div.polaroid#eight{
-    margin-left: 450px;
 }
 
 #skill div.container {
@@ -201,7 +194,7 @@ p.links a.contact:hover {
     padding-top: 25px;
     height:50%;
     display:block;
-    background: #f7f9fb;
+    background: white;
     border: 1px solid #f7f9fb;
 }
 #experience div.text-container{
@@ -219,7 +212,7 @@ div.time{
 #portfolio{
     
     padding-top: 25px;
-    height:100%;
+    height:285%;
     display:block;
     background: #f7f9fb;
     border: 1px solid #f7f9fb;
@@ -235,9 +228,9 @@ div.time{
 }
 
 #contact{
-    background: #f7f9fb;
-    border:solid #f7f9fb;
-    padding-top: 50px;
+    background: white;
+    border:solid white;
+    padding-top: 10px;
     padding-bottom: 50px;
 }
 #contact p a {

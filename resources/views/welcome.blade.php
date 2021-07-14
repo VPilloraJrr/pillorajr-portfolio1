@@ -23,16 +23,16 @@
                 <div class="top-left links">
                     <a href="{{ url('/') }}"><img src="{{ asset('assets/pics/VP.png') }}"></a> 
                 </div> 
-                <div class="top-right links">
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skill">Skills</a>
-                    <a href="#education">Education</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#contact">Contact</a>
+                <div class="top-right links" id="btns">
+                    <a href="{{ url('/') }}" class="btn active">Home</a>
+                    <a href="#about" class="btn">About</a>
+                    <a href="#skill" class="btn">Skills</a>
+                    <a href="#education" class="btn">Education</a>
+                    <a href="#experience" class="btn">Experience</a>
+                    <a href="#portfolio" class="btn">Portfolio</a>
+                    <a href="#contact" class="btn">Contact</a>
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{ url('dashboard/home') }}" class="text-sm text-gray-700 underline">Log in</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
                     @endauth
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="content" id="about">
+        <div class="content col-md-10" id="about">
             <div class="info">
                 <div class="inform">
                     <h2>Hi, I'm Vicente G. Pillora. Jr.,</h2>
@@ -76,129 +76,53 @@
             <h1 class="flex-center">SKILLS</h1>
             <p class="flex-center">I am currently living in Naga City. I am studying Bachelor of Science in Computer Science and will graduate in the year 2022. I am practicing and improving my skills.</p>
             <br />
-            <div class="polaroid" id="first">
-                <p class="logo"><img src="{{ asset('assets/pics/HTML.png')}}"></p>
-                <div class="container">
-                    <p>HTML</p>   
+
+            @foreach($data as $key => $d)
+                <div class="polaroid"> 
+                    <div class="col-sm-20">
+                        @if($d->logo)
+                            <p class="logo"><img src = "{{ asset('/storage/images/'.$d->logo )}}" alt="logo" class="logo"></p>
+                        @else
+                            <p class="logo"><img src="{{ asset('assets/pics/default.jpg')}}"></p>
+                        @endif 
+                        <div class="container">
+                            <p>{{ $d->skill_name }}</p>
+                            <label for="progress">{{ $d->skill_name }} progress:</label>
+                            <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/CSS.png')}}"></p>
-                <div class="container">
-                    <p>CSS</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/JS.png')}}"></p>
-                <div class="container">
-                    <p>JavaScript</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/PHP.png')}}"></p>
-                <div class="container">
-                    <p>PHP</p>   
-                </div>
-            </div>
-            <div class="polaroid" id="fifth">
-                <p class="logo"><img src="{{ asset('assets/pics/XAMPP.png')}}"></p>
-                <div class="container">
-                    <p>Xampp</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <br /><p class="logo"><img src="{{ asset('assets/pics/GHUB.png')}}"></p>
-                <div class="container">
-                    <p>GitHub</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/GLAB.png')}}"></p>
-                <div class="container">
-                    <p style="padding-bottom: 8px">GitLab</p>   
-                </div>
-            </div>
-            <div class="polaroid" id="eight">
-                <p class="logo"><img src="{{ asset('assets/pics/CPLUS.png')}}"></p>
-                <div class="container">
-                    <p>C++</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/BSTRAP.png')}}"></p>
-                <div class="container">
-                    <p>Bootstrap</p>   
-                </div>
-            </div>
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/JAVA.png')}}"></p>
-                <div class="container">
-                    <p>Java</p>   
-                </div>
-            </div>
+            @endforeach
         </div>
 
-        <div class="content" id="education">
+        <div class="content cols-md-4" id="education">
             <h1 class="flex-center">EDUCATION</h1>
             <p class="flex-center">Through the years in my life I experience knowledge that really strengthen my<br /> skills and my confidence to reach my goals.</p>
             <!-- Schools -->
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/TMES.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Teodora Moscoso Elementary School</p>
-                    <p><b>Year Started:</b> 2011</p>
-                    <p class="first"><b>Year Graduated:</b> 2012</p>
+            @foreach(DB::table('educations')->get() as $key => $ed)
+                <div class="polaroid">
+                    @if($ed->logo)
+                        <p class="logo"><img src = "{{ asset('/storage/images/'.$ed->logo )}}" alt="logo" class="logo"></p>
+                    @else
+                        <p class="logo"><img src="{{ asset('assets/pics/default.jpg')}}"></p>
+                    @endif 
+                    <div class="container">
+                        <p><b>School Name:</b> {{ $ed->school_name }}</p>
+                        <p><b>Year Started:</b> {{ $ed->year_started }}</p>
+                        <p class="first"><b>Year Graduated:</b> {{ $ed->year_graduated }}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Ateneo de Naga Junior High School</p>
-                    <p><b>Year Started:</b> 2012</p>
-                    <p><b>Year Graduated:</b> 2016</p>
-                </div>
-            </div>
-
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Ateneo de Naga Senior High School</p>
-                    <p><b>Year Started:</b> 2016</p>
-                    <p><b>Year Graduated:</b> 2018</p>
-                </div>
-            </div>
-
-            <div class="polaroid">
-                <p class="logo"><img src="{{ asset('assets/pics/ADNU.png')}}"></p>
-                <div class="container">
-                    <p><b>School Name:</b> Ateneo de Naga University</p>
-                    <p><b>Year Started:</b> 2018</p>
-                    <p><b>Year Graduated:</b> 2022</p>
-                </div>
-            </div>
+            @endforeach
         </div>
-
         <div class="content" id="experience">
             <h1 class="flex-center">EXPERIENCE</h1>
-            <div class="text-container ">
-                <div class="time"><b>2019 - PRESENT</b></div>
-                <h3><b>Freelance Web Developer</b></h3>
-                <p>Working happily on my own web projects</p>
-                <div class="time"><b>2018 - 2019</b></div>
-                <h3><b>Lead Web Developer</b></h3>
-                <p>Beautiful project for a major digital agency</p>
-            </div> <!-- end of text-container -->
-            
-            <div class="text-container">
-                <div class="time"><b>2017 - 2018</b></div>
-                <h3><b>Senior Web Designer</b></h3>
-                <p>Inhouse web designer for ecommerce firm</p>
-                <div class="time"><b>2016 - 2017</b></div>
-                <h3><b>Junior Web Designer</b></h3>
-                <p>Junior web designer for small web agency</p>
-            </div> <!-- end of text-container -->
-            
+            @foreach(DB::table('experiences')->get() as $key => $exp)
+                <div class="text-container ">
+                    <div class="time"><b>{{ $exp->year_started }} - {{ $exp->year_resigned }}</b></div>
+                    <h3><b>{{ $exp->position_name }}</b></h3>
+                    <p>{{ $exp->description }}</p>
+                </div>
+            @endforeach
         </div>
         
 
@@ -233,7 +157,7 @@
         <div class="content" id="contact">
             <h1 class="flex-center">Contact Information</h1>
             <p class="flex-center">For any type of online project please don't hesitate to get in touch with me. The fastest way is to <br />send me your message using the following email <a href="#">vpillorajr@gbox.adnu.edu.ph</a></p>
-            <form method="post" action="/send"  class="flex-center">
+            <form method="post" action="/dashboard/contact"  class="flex-center">
                 @csrf
                 <input type="text" name="name" placeholder="Name"/>
                 <input type="text" name="email" placeholder="Email"/>
@@ -241,5 +165,17 @@
                 <button type="submit" class="submit">Send Email</button>
             </form>
         </div>
+        <script>
+            // Add active class to the current button (highlight it)
+            var header = document.getElementById("btns");
+            var bt = header.getElementsByClassName("btn");
+            for (var i = 0; i < bt.length; i++) {
+              bt[i].addEventListener("click", function() {
+              var current = document.getElementsByClassName("active");
+              current[0].className = current[0].className.replace(" active", "");
+              this.className += " active";
+              });
+            }
+            </script>
     </body>
 </html>
