@@ -87,8 +87,8 @@
                         @endif 
                         <div class="container">
                             <p>{{ $d->skill_name }}</p>
-                            <label for="progress">{{ $d->skill_name }} progress:</label>
-                            <progress id="progress" value="{{ $d->percent }}" max="100"> {{ $d->percent }}% </progress>   
+                            <label for="progress">{{ $d->skill_name }} progress: </label>
+                            <progress id="progress" value="{{ $d->percent }}" max="100"><p>{{ $d->percent }}%</p></progress>   
                         </div>
                     </div>
                 </div>
