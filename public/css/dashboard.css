@@ -30,9 +30,7 @@ div.profile img.avatar{
 }
 a#active{
     
-    border-top-left-radius: 50%; 
-    border-bottom-left-radius: 50%;
-    background: #f7f9fb;
+    background: white;
 }
 td, th{
     padding: 10px;
@@ -47,7 +45,8 @@ th.even, td.even{
 }
 
 td.actions a{
-    border: 1px solid black;
+    margin-top:5px;
+    margin-bottom:5px;
     text-decoration: none;
     color:black;
 }

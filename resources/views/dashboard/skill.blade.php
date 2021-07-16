@@ -23,7 +23,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Skills') }}</div>
 
@@ -52,8 +52,8 @@
                             @endif
                             
                             <td class="actions">
-                                <a href='skill/edit/{{ $d->id }}'>Edit</a>
-                                <a href='skill/delete/{{ $d->id }}'>Delete</a>
+                                <a class="btn btn-outline-primary" href='skill/edit/{{ $d->id }}'>Edit</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='skill/delete/{{ $d->id }}'>Delete</a>
                             </td>
                         </tr> 
                             
@@ -74,7 +74,7 @@
                         <input type="text" name="skill_name" placeholder="Name"/>
                         <input type="text" name="percent" placeholder="Percentage"/>
                         <input type="file" name="logo" />
-                        <button type="submit" class="submit">Create</button>
+                        <button type="submit" class="submit btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
         </div>

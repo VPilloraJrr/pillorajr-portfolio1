@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\EducationRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Education;
@@ -87,7 +89,7 @@ class EducationController extends Controller
         \$$$$$$  |$$ |  $$ |$$$$$$$$\ $$ |  $$ |  $$ |   $$$$$$$$\ 
          \______/ \__|  \__|\________|\__|  \__|  \__|   \________| */
      
-        public function storePortfolio (Request $request){
+        public function storeEducation (EducationRequest $request){
             if($request->hasFile('logo')){
                 $filename = $request->file('logo')->getClientOriginalName();
                 $request->file('logo')->storeAs('images', $filename, 'public'); 

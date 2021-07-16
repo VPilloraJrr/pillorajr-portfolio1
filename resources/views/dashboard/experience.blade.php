@@ -28,6 +28,7 @@
                 <div class="card-header">{{ __('EXPERIENCE') }}</div>
 
                 <div class="card-body">
+                    <x-alert />
                     <table>
                         <tr>
                             <th>ID</th>
@@ -47,8 +48,8 @@
                             <td class="even">{{ $d->year_started }}</td>
                             <td>{{ $d->year_resigned }}</td>
                             <td class="even actions">
-                                <a href='experience/edit/{{ $d->id }}'>Edit</a>
-                                <a href='experience/delete/{{ $d->id }}'>Delete</a>
+                                <a class="btn btn-outline-primary" href='experience/edit/{{ $d->id }}'>Edit</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='experience/delete/{{ $d->id }}'>Delete</a>
                             </td>
                         </tr> 
                             
@@ -65,13 +66,13 @@
         <div class="card">
             <div class="card-header">{{ __('Create New Data') }}</div>
                 <div class="card-body">
-                    <form method="post" action="/dashboard/skill" enctype="multipart/form-data">
+                    <form method="post" action="/dashboard/experience" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="position_name" placeholder="Name"/>
-                        <input type="text" name="Description" placeholder="Description"/>
+                        <input type="text" name="description" placeholder="Description"/>
                         <input type="text" name="year_started" placeholder="Year Started"/>
                         <input type="text" name="year_resigned" placeholder="Year Resigned"/>
-                        <button type="submit" class="submit">Create</button>
+                        <button type="submit" class="submit btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
         </div>

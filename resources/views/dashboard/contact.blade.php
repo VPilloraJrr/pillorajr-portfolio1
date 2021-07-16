@@ -43,7 +43,7 @@
                             <td class="even">{{ $d->name }}</td>
                             <td>{{ $d->email }}</td>
                             <td class="even">{{ $d->content }}</td>
-                            <td class="actions"><a href='contact/delete/{{ $d->id }}'>Delete</a></td>
+                            <td class="actions"><a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')"href='contact/delete/{{ $d->id }}'>Delete</a></td>
                         </tr> 
                             
                         @empty

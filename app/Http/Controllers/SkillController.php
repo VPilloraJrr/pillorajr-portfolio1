@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\SkillRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -73,7 +75,7 @@ class SkillController extends Controller
         $data = DB::select('select * from skills where id = ?',[$id]);
         return view('dashboard.skill_update',['data'=>$data]);
      }
-     public function edit(Request $request, $id) {
+     public function edit(SkillRequest $request, $id) {
 
         if($request->hasFile('logo')){
             $filename = $request->input('logo')->getClientOriginalName();
@@ -89,7 +91,7 @@ class SkillController extends Controller
             $logo = $request->input('logo');
             DB::update('update skills set skill_name = ?,percent = ?,logo = ? where id = ?',[$skill_name,$percent,$logo,$id]);
         }
-        return redirect('dashboard/skill')->with('message', 'Data Created Succesfully');
+        return redirect('dashboard/skill')->with('message', 'Data Updated Succesfully');
      }
                                         
   /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -101,7 +103,7 @@ class SkillController extends Controller
     \$$$$$$  |$$ |  $$ |$$$$$$$$\ $$ |  $$ |  $$ |   $$$$$$$$\ 
      \______/ \__|  \__|\________|\__|  \__|  \__|   \________| */
  
-    public function storeSkill (Request $request){
+    public function storeSkill (SkillRequest $request){
         if($request->hasFile('logo')){
             $filename = $request->file('logo')->getClientOriginalName();
             $request->file('logo')->storeAs('images', $filename, 'public'); 
