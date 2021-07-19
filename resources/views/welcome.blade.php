@@ -8,37 +8,40 @@
 
         <!-- Fonts-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Stylesheet-->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
+        
         <style>
             .full-height{
                 background: url("{{asset('assets/pics/bg-header.jpg')}}");
             }
         </style>
     </head>
-    <body>
+    <body data-spy="scroll" data-offset="15" data-target="#btns">
         <div class="full-height">
-            <div class="nav">
-                <div class="top-left links">
-                    <a href="{{ url('/') }}"><img src="{{ asset('assets/pics/VP.png') }}"></a> 
-                </div> 
-                <div class="top-right links" id="btns">
-                    <a href="{{ url('/') }}" class="btn active">Home</a>
-                    <a href="#about" class="btn">About</a>
-                    <a href="#skill" class="btn">Skills</a>
-                    <a href="#education" class="btn">Education</a>
-                    <a href="#experience" class="btn">Experience</a>
-                    <a href="#portfolio" class="btn">Portfolio</a>
-                    <a href="#contact" class="btn">Contact</a>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <ul class="top-left links">
+                    <li><a href="{{ url('/') }}"><img src="{{ asset('assets/pics/VP.png') }}"></a></li> 
+                </ul> 
+                <ul class="top-right links nav navbar-nav" id="btns">
+                    <li><a href="#header" class="btn active"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#about" class="btn" title="About">About</a></li>
+                    <li><a href="#skill" class="btn" title="Skills">Skills</a></li>
+                    <li><a href="#education" class="btn" title="Education">Education</a></li>
+                    <li><a href="#experience" class="btn" title="Experience">Experience</a></li>
+                    <li><a href="#portfolio" class="btn" title="Portfolio">Portfolio</a></li>
+                    <li><a href="#contact" class="btn"  title="Contact">Contact</a></li>
                     @auth
-                        <a href="{{ url('dashboard/home') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        <li><a href="{{ url('dashboard/home') }}" class="text-sm text-gray-700 underline"><i class="fa fa-user"></i> Log in</a></li>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline"><i class="fa fa-user"></i> Log in</a></li>
                     @endauth
-                </div>    
-            </div>
-    
+                </ul>    
+            </nav>
+
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+
             <div class="content" id="header">
                 <div class="title">
                     <p>Creating Designs <br /> For an Unending Innovation</p>
@@ -87,8 +90,8 @@
                         @endif 
                         <div class="container">
                             <p>{{ $d->skill_name }}</p>
-                            <label for="progress">{{ $d->skill_name }} progress: </label>
-                            <progress id="progress" value="{{ $d->percent }}" max="100"><p>{{ $d->percent }}%</p></progress>   
+                            <label for="progress">{{ $d->skill_name }} progress: <b>{{ $d->percent }}%</b></label>
+                            <progress id="progress" value="{{ $d->percent }}" max="100"><p></p></progress>   
                         </div>
                     </div>
                 </div>
@@ -165,17 +168,37 @@
                 <button type="submit" class="submit">Send Email</button>
             </form>
         </div>
-        <script>
-            // Add active class to the current button (highlight it)
-            var header = document.getElementById("btns");
-            var bt = header.getElementsByClassName("btn");
-            for (var i = 0; i < bt.length; i++) {
-              bt[i].addEventListener("click", function() {
-              var current = document.getElementsByClassName("active");
-              current[0].className = current[0].className.replace(" active", "");
-              this.className += " active";
-              });
-            }
-            </script>
     </body>
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("btns");
+        var bt = header.getElementsByClassName("btn");
+        for (var i = 0; i < bt.length; i++) {
+          bt[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+          });
+        }
+
+        //Get the button:
+        mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
 </html>

@@ -49,7 +49,7 @@
                             <td>{{ $d->year_resigned }}</td>
                             <td class="even actions">
                                 <a class="btn btn-outline-primary" href='experience/edit/{{ $d->id }}'>Edit</a>
-                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='experience/delete/{{ $d->id }}'>Delete</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='experience/delete/{{ $d->id }}'><i class="fa fa-trash"></i></a>
                             </td>
                         </tr> 
                             

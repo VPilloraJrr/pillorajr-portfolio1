@@ -55,7 +55,7 @@
                             @endif
                             <td class="even actions">
                                 <a class="btn btn-outline-primary" href='portfolio/edit/{{ $d->id }}'>Edit</a>
-                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='portfolio/delete/{{ $d->id }}'>Delete</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='portfolio/delete/{{ $d->id }}'><i class="fa fa-trash"></i></a>
                             </td>
                         </tr> 
                             

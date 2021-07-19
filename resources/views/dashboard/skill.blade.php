@@ -53,7 +53,7 @@
                             
                             <td class="actions">
                                 <a class="btn btn-outline-primary" href='skill/edit/{{ $d->id }}'>Edit</a>
-                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='skill/delete/{{ $d->id }}'>Delete</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='skill/delete/{{ $d->id }}'><i class="fa fa-trash"></i></a>
                             </td>
                         </tr> 
                             
