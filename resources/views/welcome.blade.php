@@ -134,27 +134,21 @@
             <p class="flex-center">Listed below are some of the most representative projects I've worked on.</p>
             <br />
 
+            @forelse(DB::table('portfolios')->get() as $key => $port)
             <div class="text-container">
                 <div class="image-container">
-                    <p><img src="{{ asset('assets/pics/portfolio_1.png')}}"></p>
+                    <p><img src="{{ asset('assets/pics/'.$port->screenshot)}}"></p>
                 </div>
-                <p align="center"><b>Project:</b> A clinic front page with bootstrap.</p>
-            </div>
-
-            <div class="text-container">
-                <div class="image-container">
-                    <p><img src="{{ asset('assets/pics/portfolio_2.png')}}"></p>
-                </div>
-                <p align="center"><b>Project:</b> An eCommerce webpage of a company seling gadgets such as phones.</p>
-            </div>
-
-            <div class="text-container">
-                <div class="image-container">
-                    <p><img src="{{ asset('assets/pics/portfolio_3.png')}}"></p>
-                </div>
-                <p align="center"><b>Project:</b> A simple tourism page about Bicol.</p>
-            </div>
-
+                @if($port->client)
+                    <p align="center"><b>For:</b> {{ $port->client }}</p> 
+                @else
+                    <p></p>   
+                @endif
+                <p align="center"><b>Project:</b> {{ $port->description }}</p>
+            </div> 
+            @empty
+                <p align="center">No Data(s) Found</p>
+            @endforelse(DB::table('portfolios')->get() as $key => $port)
         </div>
 
         <div class="content" id="contact">
@@ -167,6 +161,19 @@
                 <textarea name="content" placeholder="Project Informations" class="body"></textarea>
                 <button type="submit" class="submit">Send Email</button>
             </form>
+        </div>
+
+        <div class="footer">
+            <footer>
+                <div class="container">
+                    <button class="btn flex-center"><a href="#"><i class="fa fa-facebook-square"></i></a></button>
+                    <button class="btn flex-center"><a href="#"><i class="fa fa-twitter-square"></i></a></button>
+                    <button class="btn flex-center"><a href="#"><i class="fa fa-envelope-square"></i></a></button>
+                </div>
+                <div class="text-container">
+                    <p>&copy; Copyright 2021 Vicente G. Pillora Jr</p>
+                </div>
+            </footer>
         </div>
     </body>
     <script>
