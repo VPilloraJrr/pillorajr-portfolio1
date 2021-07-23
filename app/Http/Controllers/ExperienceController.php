@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ExperienceRequest;
 use App\Experience;
 use Illuminate\Http\Request;
 
@@ -53,19 +55,19 @@ class ExperienceController extends Controller
 
 
 
-        public function show($id) {
-            $data = DB::select('select * from experiences where id = ?',[$id]);
-            return view('dashboard.experience_update',['data'=>$data]);
-         }
-         public function edit(Request $request, $id) {
+    public function show($id) {
+        $data = DB::select('select * from experiences where id = ?',[$id]);
+        return view('dashboard.experience_update',['data'=>$data]);
+    }
+    public function edit(Request $request, $id) {
                 
-                $position_name = $request->input('position_name');
-                $description = $request->input('description');
-                $year_started = $request->input('year_started');
-                $year_resigned = $request->input('year_resigned');
-                DB::update('update experiences set position_name = ?,description = ?,year_started = ?,year_resigned = ? where id = ?',[$position_name,$description,$year_started,$year_resigned,$id]);
-            return redirect('dashboard/experience')->with('message', 'Data Updated Succesfully');
-         }
+        $position_name = $request->input('position_name');
+        $description = $request->input('description');
+        $year_started = $request->input('year_started');
+        $year_resigned = $request->input('year_resigned');
+        DB::update('update experiences set position_name = ?,description = ?,year_started = ?,year_resigned = ? where id = ?',[$position_name,$description,$year_started,$year_resigned,$id]);
+        return redirect('dashboard/experience')->with('message', 'Data Updated Succesfully');
+    }
                                             
       /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
         $$  __$$\ $$  __$$\ $$  _____|$$  __$$\\__$$  __|$$  _____|
@@ -76,7 +78,7 @@ class ExperienceController extends Controller
         \$$$$$$  |$$ |  $$ |$$$$$$$$\ $$ |  $$ |  $$ |   $$$$$$$$\ 
          \______/ \__|  \__|\________|\__|  \__|  \__|   \________| */
      
-        public function storePortfolio (Request $request){
+        public function storeExperience (ExperienceRequest $request){
             
             $exp = new Experience();
             $exp->position_name = $request->position_name;

@@ -16,6 +16,10 @@ a.list-group-item.list-group-item-action.list-group-item-light.p-3{
 div.row{
     margin-left: 10%;
     margin-top: 10px;
+    width: 100%;
+}
+table{
+    width: 100%;
 }
 .col-md-8{
     padding-left:100px;
@@ -26,13 +30,14 @@ div.profile img{
 }
 
 div.profile img.avatar{
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 a#active{
     
-    border-top-left-radius: 50%; 
-    border-bottom-left-radius: 50%;
-    background: #f7f9fb;
+    background: white;
 }
 td, th{
     padding: 10px;
@@ -47,10 +52,15 @@ th.even, td.even{
 }
 
 td.actions a{
-    border: 1px solid black;
+    margin-top:5px;
+    margin-bottom:5px;
     text-decoration: none;
     color:black;
 }
 .logo, .screenshot{
     width: 50px;
+}
+
+.fa{
+    padding:5px;
 }

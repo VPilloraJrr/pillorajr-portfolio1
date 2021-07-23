@@ -28,6 +28,8 @@
                 <div class="card-header">{{ __('PORTFOLIO') }}</div>
 
                 <div class="card-body">
+                    <x-alert />
+                     
                     <table>
                         <tr>
                             <th>ID</th>
@@ -52,8 +54,8 @@
                                 <td></td>
                             @endif
                             <td class="even actions">
-                                <a href='portfolio/edit/{{ $d->id }}'>Edit</a>
-                                <a href='portfolio/delete/{{ $d->id }}'>Delete</a>
+                                <a class="btn btn-outline-primary" href='portfolio/edit/{{ $d->id }}'>Edit</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href='portfolio/delete/{{ $d->id }}'><i class="fa fa-trash"></i></a>
                             </td>
                         </tr> 
                             
@@ -70,13 +72,13 @@
         <div class="card">
             <div class="card-header">{{ __('Create New Data') }}</div>
                 <div class="card-body">
-                    <form method="post" action="/dashboard/skill" enctype="multipart/form-data">
+                    <form method="post" action="/dashboard/portfolio" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="Project_name" placeholder="Name"/>
+                        <input type="text" name="project_name" placeholder="Name"/>
                         <input type="text" name="client" placeholder="Client"/>
                         <input type="text" name="description" placeholder="Description"/>
                         <input type="file" name="screenshot" />
-                        <button type="submit" class="submit">Create</button>
+                        <button type="submit" class="submit btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
         </div>
