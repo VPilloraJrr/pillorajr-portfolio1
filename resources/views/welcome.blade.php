@@ -8,17 +8,24 @@
 
         <!-- Fonts-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <!-- Stylesheet-->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Script -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity= "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
         <style>
             .full-height{
                 background: url("{{asset('assets/pics/bg-header.jpg')}}");
             }
         </style>
+
     </head>
-    <body data-spy="scroll" data-offset="15" data-target="#btns">
+    <body>
         <div class="full-height">
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <ul class="top-left links">
@@ -32,11 +39,6 @@
                     <li><a href="#experience" class="btn" title="Experience">Experience</a></li>
                     <li><a href="#portfolio" class="btn" title="Portfolio">Portfolio</a></li>
                     <li><a href="#contact" class="btn"  title="Contact">Contact</a></li>
-                    @auth
-                        <li><a href="{{ url('dashboard/home') }}" class="text-sm text-gray-700 underline"><i class="fa fa-user"></i> Log in</a></li>
-                    @else
-                        <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline"><i class="fa fa-user"></i> Log in</a></li>
-                    @endauth
                 </ul>    
             </nav>
 
@@ -177,6 +179,17 @@
         </div>
     </body>
     <script>
+
+        /*   $$$$$$\                   $$$$$$\  $$\ $$\           $$\       
+            $$  __$$\                 $$  __$$\ $$ |\__|          $$ |      
+            $$ /  $$ |$$$$$$$\        $$ /  \__|$$ |$$\  $$$$$$$\ $$ |  $$\ 
+            $$ |  $$ |$$  __$$\       $$ |      $$ |$$ |$$  _____|$$ | $$  |
+            $$ |  $$ |$$ |  $$ |      $$ |      $$ |$$ |$$ /      $$$$$$  / 
+            $$ |  $$ |$$ |  $$ |      $$ |  $$\ $$ |$$ |$$ |      $$  _$$<  
+             $$$$$$  |$$ |  $$ |      \$$$$$$  |$$ |$$ |\$$$$$$$\ $$ | \$$\ 
+             \______/ \__|  \__|       \______/ \__|\__| \_______|\__|  \__|
+        */ 
+            
         // Add active class to the current button (highlight it)
         var header = document.getElementById("btns");
         var bt = header.getElementsByClassName("btn");
@@ -185,8 +198,21 @@
           var current = document.getElementsByClassName("active");
           current[0].className = current[0].className.replace(" active", "");
           this.className += " active";
-          });
+          });   
         }
+
+        /*   $$$$$$\         $$$$$$$$\              $$$$$$$$\                  
+            $$  __$$\        \__$$  __|             \__$$  __|                 
+            $$ /  \__| $$$$$$\  $$ | $$$$$$\           $$ | $$$$$$\   $$$$$$\  
+            $$ |$$$$\ $$  __$$\ $$ |$$  __$$\          $$ |$$  __$$\ $$  __$$\ 
+            $$ |\_$$ |$$ /  $$ |$$ |$$ /  $$ |         $$ |$$ /  $$ |$$ /  $$ |
+            $$ |  $$ |$$ |  $$ |$$ |$$ |  $$ |         $$ |$$ |  $$ |$$ |  $$ |
+            \$$$$$$  |\$$$$$$  |$$ |\$$$$$$  |         $$ |\$$$$$$  |$$$$$$$  |
+            \______/  \______/ \__| \______/          \__| \______/ $$  ____/ 
+                                                                    $$ |      
+                                                                    $$ |      
+                                                                    \__|  
+        */     
 
         //Get the button:
         mybutton = document.getElementById("myBtn");
@@ -207,5 +233,27 @@
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }
+        
+        /* 
+         $$$$$$\                   $$$$$$\                                $$\ $$\ 
+        $$  __$$\                 $$  __$$\                               $$ |$$ |
+        $$ /  $$ |$$$$$$$\        $$ /  \__| $$$$$$$\  $$$$$$\   $$$$$$\  $$ |$$ |
+        $$ |  $$ |$$  __$$\       \$$$$$$\  $$  _____|$$  __$$\ $$  __$$\ $$ |$$ |
+        $$ |  $$ |$$ |  $$ |       \____$$\ $$ /      $$ |  \__|$$ /  $$ |$$ |$$ |
+        $$ |  $$ |$$ |  $$ |      $$\   $$ |$$ |      $$ |      $$ |  $$ |$$ |$$ |
+         $$$$$$  |$$ |  $$ |      \$$$$$$  |\$$$$$$$\ $$ |      \$$$$$$  |$$ |$$ |
+         \______/ \__|  \__|       \______/  \_______|\__|       \______/ \__|\__
+        */
+
+        $(window).scroll(function () {
+            var distance = $(window).scrollTop();
+            $('.content').each(function (i) {
+  
+                if ($(this).position().top <= distance + 250) {
+                    $('.navbar-nav a.active').removeClass('active');
+                    $('.navbar-nav a').eq(i).addClass('active');
+                }
+            });
+        }).scroll();
     </script>
 </html>
