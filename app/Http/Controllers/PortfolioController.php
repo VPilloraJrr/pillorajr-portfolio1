@@ -39,13 +39,13 @@ class PortfolioController extends Controller
             $project_name = $request->input('project_name');
             $client = $request->input('client');
             $description = $request->input('description');
-            $screenshot = $request->input('screenhshot')->getClientOriginalName();
+            $screenshot = $request->input('screenshot')->getClientOriginalName();
             DB::update('update portfolios set project_name = ?,client = ?,description = ?,screenshot = ? where id = ?',[$project_name,$client,$description,$screenshot,$id]);
         }else{
             $project_name = $request->input('project_name');
             $client = $request->input('client');
             $description = $request->input('description');
-            $screenshot = $request->input('screenhshot');
+            $screenshot = $request->input('screenshot');
             DB::update('update portfolios set project_name = ?,client = ?,description = ?,screenshot = ? where id = ?',[$project_name,$client,$description,$screenshot,$id]);
         }
         return redirect('dashboard/portfolio')->with('message', 'Data Updated Succesfully');

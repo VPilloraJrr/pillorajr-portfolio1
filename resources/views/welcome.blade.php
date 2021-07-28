@@ -39,6 +39,13 @@
                     <li><a href="#experience" class="btn" title="Experience">Experience</a></li>
                     <li><a href="#portfolio" class="btn" title="Portfolio">Portfolio</a></li>
                     <li><a href="#contact" class="btn"  title="Contact">Contact</a></li>
+                    @if (Route::has('login'))
+                        @auth
+                            <li><a href="{{ url('/dashboard/home') }}" class="text-sm text-gray-700 underline">{{ Auth::user()->name }}</a></li>
+                        @else
+                            <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a></li>
+                        @endauth
+                    @endif
                 </ul>    
             </nav>
 

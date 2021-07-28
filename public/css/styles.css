@@ -12,7 +12,7 @@ html, body {
 .full-height {
     height: 100vh;
     background-repeat: no-repeat;
-    background-size: 100%;    
+    background-size: 100%;  
 }
 
 .flex-center {
@@ -38,7 +38,7 @@ html, body {
 .top-right {
     position: fixed;
     right: 0px;
-    padding-left: 452px;
+    
     padding-bottom: 17px;
     padding-top: 11px;
     background-color: #f7f9fb;
@@ -470,13 +470,206 @@ footer div.text-container{
     text-align:center;
 }
 
-@media screen and (max-width: 900px) {
-    .content {
-       width: 50%;
+@media only screen and (max-width: 600px) {
+    .full-height,#about, #skill, #education, #portfolio, #experience, #contact, footer  {
+        
+        width:263%;
     }
- }
- @media screen and (max-width: 600px) {
-    .content {
-       width: 100%;
+    .full-height{
+        height:140%;
     }
- }
+    .top-right {
+        position: fixed;
+        right: 0px;
+        padding-left: 43%;    
+        padding-bottom: 17px;
+        padding-top: 11px;
+        background-color: #f7f9fb;
+    }
+    #about {
+        height: 170%;
+    }
+    #about div.info div.inform p.links a {
+        height:100%;
+        width:30%;
+        float:left;
+    }
+
+    #skill{
+        height:150%;
+    }
+    #skill div.polaroid {
+        width: 15%;
+        height: 30%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        float: left;
+        margin-left:10px;
+    }
+
+    #education {
+        height:100%;
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .full-height,#about, #skill, #education, #portfolio, #experience, #contact, footer  {
+        width:230%;
+    }
+    .top-right {
+        position: fixed;
+        right: 0px;
+        padding-left: 36%;    
+        padding-bottom: 17px;
+        padding-top: 11px;
+        background-color: #f7f9fb;
+    }
+    #about {
+        height: 105%;
+    }
+    #about div.info div.inform p.links a {
+        height:100%;
+        width:30%;
+        float:left;
+    }
+
+    #skill{
+        height:150%;
+    }
+    #skill div.polaroid {
+        width: 15%;
+        height: 30%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        float: left;
+        margin-left:10px;
+    }
+
+    #education {
+        height:100%;
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .full-height, #about, #skill, #education, #portfolio, #experience, #contact, footer  {
+        width: 164%;
+    }
+    .top-right {
+        position: fixed;
+        right: 0px;
+        padding-left: 30%;    
+        padding-bottom: 17px;
+        padding-top: 11px;
+        background-color: #f7f9fb;
+    }
+    #about {
+        height: 105%;
+    }
+    #about div.info div.inform p.links a {
+        height:100%;
+        width:30%;
+        float:left;
+    }
+
+    #skill{
+        height:150%;
+    }
+    #skill div.polaroid {
+        width: 15%;
+        height: 30%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        float: left;
+        margin-left:10px;
+    }
+
+    #education {
+        height:100%;
+    }
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    #about, #skill, #education, #portfolio, #experience, #contact, footer  {
+        width: 127%;
+    }
+    .full-height{
+        width:127%;
+    }
+    .top-right {
+        position: fixed;
+        right: 0px;
+        padding-left: 30%;    
+        padding-bottom: 17px;
+        padding-top: 11px;
+        background-color: #f7f9fb;
+    }
+    #about {
+        height: 105%;
+    }
+    #about div.info div.inform p.links a {
+        height:100%;
+        width:30%;
+        float:left;
+    }
+
+    #skill{
+        height:150%;
+    }
+    #skill div.polaroid {
+        width: 15%;
+        height: 30%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        float: left;
+        margin-left:10px;
+    }
+
+    #education {
+        height:100%;
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .top-right {
+        position: fixed;
+        right: 0px;
+        padding-left: 42%;    
+        padding-bottom: 17px;
+        padding-top: 11px;
+        background-color: #f7f9fb;
+    }
+    #about {
+        height: 105%;
+    }
+    #about div.info div.inform p.links a {
+        height:100%;
+        width:30%;
+        float:left;
+    }
+
+    #skill{
+        height:130%;
+    }
+    #skill div.polaroid {
+        width: 15%;
+        height: 30%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        float: left;
+        margin-left:10px;
+    }
+
+    #education {
+        height:100%;
+    }
+    
+}
