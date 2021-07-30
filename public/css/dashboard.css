@@ -47,8 +47,7 @@ td, th{
     text-align: center;
 }
 th.even, td.even{
-    background: #f7f9fb;
-    
+    background: #f7f9fb; 
 }
 
 td.actions a{
@@ -63,4 +62,8 @@ td.actions a{
 
 .fa{
     padding:5px;
+}
+
+.create td{
+    border: none;
 }

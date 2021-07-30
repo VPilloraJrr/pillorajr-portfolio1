@@ -24,7 +24,9 @@ class ExperienceRequest extends FormRequest
     public function rules()
     {
         return [
-            'year_started' => 'integer',
+            'position_name' => 'required',
+            'description' => 'required',
+            'year_started' => 'required|integer',
             'year_resigned' => 'integer|nullable',
         ];
     }

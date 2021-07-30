@@ -43,7 +43,7 @@ class EducationController extends Controller
        //Education::create($data3);
 
         $data = DB::table('educations')->get();
-        return view('dashboard.education', ['data'=>$data]);
+        return view('dashboard.education.index', ['data'=>$data]);
     }
     
     /*  $$$$$$$$\ $$$$$$$\  $$$$$$\ $$$$$$$$\ 
@@ -57,9 +57,9 @@ class EducationController extends Controller
 
         public function show($id) {
             $data = DB::select('select * from educations where id = ?',[$id]);
-            return view('dashboard.education_update',['data'=>$data]);
+            return view('dashboard.education.education_update',['data'=>$data]);
          }
-         public function edit(Request $request, $id) {
+         public function edit(EducationRequest $request, $id) {
     
             if($request->hasFile('logo')){
                 $filename = $request->input('logo')->getClientOriginalName();

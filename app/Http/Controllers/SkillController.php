@@ -59,7 +59,7 @@ class SkillController extends Controller
         //Skill::insert($data);
     
         $data = DB::table('skills')->get();
-        return view('dashboard.skill', ['data'=>$data]);
+        return view('dashboard.skill.index', ['data'=>$data]);
     }
 
 /*  $$$$$$$$\ $$$$$$$\  $$$$$$\ $$$$$$$$\ 
@@ -73,7 +73,7 @@ class SkillController extends Controller
 
     public function show($id) {
         $data = DB::select('select * from skills where id = ?',[$id]);
-        return view('dashboard.skill_update',['data'=>$data]);
+        return view('dashboard.skill.skill_update',['data'=>$data]);
      }
      public function edit(SkillRequest $request, $id) {
 
@@ -104,23 +104,27 @@ class SkillController extends Controller
      \______/ \__|  \__|\________|\__|  \__|  \__|   \________| */
  
     public function storeSkill (SkillRequest $request){
-        if($request->hasFile('logo')){
-            $filename = $request->file('logo')->getClientOriginalName();
-            $request->file('logo')->storeAs('images', $filename, 'public'); 
-
-            $skill = new Skill();
-            $skill->skill_name = $request->skill_name;
-            $skill->percent = $request->percent;
-            $skill->logo = $request->file('logo')->getClientOriginalName();
-            $skill->save();
+        if($request->fails()) {
+            return back()->withErrors($request->errors());
         }else{
-            $skill = new Skill();
-            $skill->skill_name = $request->skill_name;
-            $skill->percent = $request->percent;
-            $skill->logo = $request->logo;
-            $skill->save(); 
+            if($request->hasFile('logo')){
+                $filename = $request->file('logo')->getClientOriginalName();
+                $request->file('logo')->storeAs('images', $filename, 'public'); 
+    
+                $skill = new Skill();
+                $skill->skill_name = $request->skill_name;
+                $skill->percent = $request->percent;
+                $skill->logo = $request->file('logo')->getClientOriginalName();
+                $skill->save();
+            }else{
+                $skill = new Skill();
+                $skill->skill_name = $request->skill_name;
+                $skill->percent = $request->percent;
+                $skill->logo = $request->logo;
+                $skill->save(); 
+            }
+            return redirect()->back()->with('message', 'Data Created Succesfully');
         }
-        return redirect()->back()->with('message', 'Data Created Succesfully');
     }
 
  /* $$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 

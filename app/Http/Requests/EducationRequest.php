@@ -24,8 +24,10 @@ class EducationRequest extends FormRequest
     public function rules()
     {
         return [
-            'year_started' => 'integer',
+            'school_name' => 'required',
+            'year_started' => 'required|integer',
             'year_graduated' => 'integer|nullable',
+            'logo' => 'nullable|mimes:jpeg,png,jpg,bmp',
         ];
     }
     public function messages()

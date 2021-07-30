@@ -165,8 +165,17 @@
             <p class="flex-center">For any type of online project please don't hesitate to get in touch with me. The fastest way is to <br />send me your message using the following email <a href="#">vpillorajr@gbox.adnu.edu.ph</a></p>
             <form method="post" action="/dashboard/contact"  class="flex-center">
                 @csrf
-                <input type="text" name="name" placeholder="Name"/>
-                <input type="text" name="email" placeholder="Email"/>
+                <div {{ $errors->has('name') ? 'has-error' : '' }}>
+                    <span class="alert alert-danger" style="color:red"> {{ $errors->first('name') }}</span><br />
+                    <input type="text" name="name" placeholder="Name"/>
+                </div>
+                <div {{ $errors->has('email') ? 'has-error' : '' }}>
+                    <span class="alert alert-danger" style="color:red"> {{ $errors->first('email') }}</span><br />
+                    <input type="text" name="email" placeholder="Email"/>
+                </div>
+                <div {{ $errors->has('content') ? 'has-error' : '' }}>
+                    <span class="alert alert-danger" style="color:red"> {{ $errors->first('content') }}</span><br />
+                </div>
                 <textarea name="content" placeholder="Project Informations" class="body"></textarea>
                 <button type="submit" class="submit">Send Email</button>
             </form>

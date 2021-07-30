@@ -40,7 +40,7 @@ class ExperienceController extends Controller
 
         //Experience::insert($data);
         $data = DB::table('experiences')->get();
-        return view('dashboard.experience', ['data'=>$data]);
+        return view('dashboard.experience.index', ['data'=>$data]);
     }
 
 
@@ -57,9 +57,9 @@ class ExperienceController extends Controller
 
     public function show($id) {
         $data = DB::select('select * from experiences where id = ?',[$id]);
-        return view('dashboard.experience_update',['data'=>$data]);
+        return view('dashboard.experience.experience_update',['data'=>$data]);
     }
-    public function edit(Request $request, $id) {
+    public function edit(ExperienceRequest $request, $id) {
                 
         $position_name = $request->input('position_name');
         $description = $request->input('description');

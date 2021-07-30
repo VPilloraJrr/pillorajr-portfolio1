@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\PortfolioRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Portfolio;
@@ -14,7 +15,7 @@ class PortfolioController extends Controller
     public function index()
     {
         $data = DB::table('portfolios')->get();
-        return view('dashboard.portfolio', ['data'=>$data]);
+        return view('dashboard.portfolio.index', ['data'=>$data]);
     }
 
     /*  $$$$$$$$\ $$$$$$$\  $$$$$$\ $$$$$$$$\ 
@@ -28,9 +29,9 @@ class PortfolioController extends Controller
 
     public function show($id) {
         $data = DB::select('select * from portfolios where id = ?',[$id]);
-        return view('dashboard.portfolio_update',['data'=>$data]);
+        return view('dashboard.portfolio.portfolio_update',['data'=>$data]);
      }
-     public function edit(Request $request, $id) {
+     public function edit(PortfolioRequest $request, $id) {
 
         if($request->hasFile('screenshot')){
             $filename = $request->input('screenshot')->getClientOriginalName();
@@ -60,7 +61,7 @@ class PortfolioController extends Controller
     \$$$$$$  |$$ |  $$ |$$$$$$$$\ $$ |  $$ |  $$ |   $$$$$$$$\ 
      \______/ \__|  \__|\________|\__|  \__|  \__|   \________| */
  
-    public function storePortfolio (Request $request){
+    public function storePortfolio (PortfolioRequest $request){
         if($request->hasFile('screenshot')){
             $filename = $request->file('screenshot')->getClientOriginalName();
             $request->file('screenshot')->storeAs('images', $filename, 'public'); 

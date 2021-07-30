@@ -28,7 +28,11 @@
                 <div class="card-header">{{ __('Skills') }}</div>
 
                 <div class="card-body">
-                    <x-alert />
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <table class="row justify-content-center">
                         <tr>
                             <th>ID</th>
@@ -71,10 +75,41 @@
                 <div class="card-body">
                     <form method="post" action="/dashboard/skill" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="skill_name" placeholder="Name"/>
-                        <input type="text" name="percent" placeholder="Percentage"/>
-                        <input type="file" name="logo" />
-                        <button type="submit" class="submit btn btn-outline-secondary">Create</button>
+                        <table class="create">
+                            <tr>
+                                <td>
+                                    <div {{ $errors->has('skill_name') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('skill_name') }}</span>
+                                    </div> 
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('percent') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('percent') }}</span>
+                                    </div> 
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('logo') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('logo') }}</span>
+                                    </div> 
+                                </td>
+                                <td></td>   
+                            </tr>
+                                <td>
+                                    <input type="text" name="skill_name" placeholder="Name"/>
+                                </td>
+                                <td>
+                                    <input type="text" name="percent" placeholder="Percentage"/>
+                                </td>
+                                <td>
+                                    <input type="file" name="logo" />
+                                </td>
+                                <td>
+                                    <button type="submit" class="submit btn btn-outline-secondary">Create</button>
+                                </td>
+                            <tr>
+
+                            </tr>
+                        </table>
                     </form>
                 </div>
         </div>

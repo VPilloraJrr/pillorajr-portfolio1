@@ -28,6 +28,11 @@
                 <div class="card-header">{{ __('CONTACT') }}</div>
 
                 <div class="card-body">
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <table>
                         <tr>
                             <th>ID</th>
