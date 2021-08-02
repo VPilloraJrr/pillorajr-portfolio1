@@ -29,7 +29,7 @@
         <div class="full-height">
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <ul class="top-left links">
-                    <li><a href="{{ url('/') }}"><img src="{{ asset('assets/pics/VP.png') }}"></a></li> 
+                    <li><a href="{{ url('/') }}"><img src="{{ secure_asset('assets/pics/VP.png') }}"></a></li> 
                 </ul> 
                 <ul class="top-right links nav navbar-nav" id="btns">
                     <li><a href="#header" class="btn active"><i class="fa fa-home"></i> Home</a></li>
