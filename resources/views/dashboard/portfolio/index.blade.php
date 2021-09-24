@@ -1,6 +1,8 @@
 @extends('layouts.app')
+<title>Dashboard | Portfolio </title>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 @section('content')
+
 <div class="container">
     <div class="border-end" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -28,7 +30,12 @@
                 <div class="card-header">{{ __('PORTFOLIO') }}</div>
 
                 <div class="card-body">
-                    <x-alert />
+
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                      
                     <table>
                         <tr>
@@ -69,19 +76,51 @@
     </div>
 
     <div class="row justify-content-center">
+        <div class="col-sm-12">
         <div class="card">
             <div class="card-header">{{ __('Create New Data') }}</div>
                 <div class="card-body">
                     <form method="post" action="/dashboard/portfolio" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="project_name" placeholder="Name"/>
-                        <input type="text" name="client" placeholder="Client"/>
-                        <input type="text" name="description" placeholder="Description"/>
-                        <input type="file" name="screenshot" />
+                        <table class="create">
+                            <tr>
+                                <td>
+                                    <div {{ $errors->has('project_name') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('project_name') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('client') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('client') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('description') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('description') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('screenshot') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('screenshot') }}</span>
+                                    </div>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="project_name" placeholder="Name"/></td>
+                                <td><input type="text" name="client" placeholder="Client"/></td>
+                                <td><input type="text" name="description" placeholder="Description"/></td>
+                                <td><input type="file" name="screenshot" /></td>
+                                
+                            </tr>
+                        </table>
                         <button type="submit" class="submit btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
         </div>
+        </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection

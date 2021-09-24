@@ -1,6 +1,8 @@
 @extends('layouts.app')
+<title>Dashboard | Contact</title>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 @section('content')
+@toastr_css
 <div class="container">
     <div class="border-end" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -28,6 +30,11 @@
                 <div class="card-header">{{ __('CONTACT') }}</div>
 
                 <div class="card-body">
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <table>
                         <tr>
                             <th>ID</th>
@@ -56,4 +63,7 @@
         </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection

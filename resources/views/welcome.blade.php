@@ -17,7 +17,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity= "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
+        @toastr_css
         <style>
             .full-height{
                 background: url("{{asset('assets/pics/bg-header.jpg')}}");
@@ -39,6 +39,13 @@
                     <li><a href="#experience" class="btn" title="Experience">Experience</a></li>
                     <li><a href="#portfolio" class="btn" title="Portfolio">Portfolio</a></li>
                     <li><a href="#contact" class="btn"  title="Contact">Contact</a></li>
+                    @if (Route::has('login'))
+                        @auth
+                            <li><a href="{{ url('/dashboard/home') }}" class="text-sm text-gray-700 underline">{{ Auth::user()->name }}</a></li>
+                        @else
+                            <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a></li>
+                        @endauth
+                    @endif
                 </ul>    
             </nav>
 
@@ -158,8 +165,17 @@
             <p class="flex-center">For any type of online project please don't hesitate to get in touch with me. The fastest way is to <br />send me your message using the following email <a href="#">vpillorajr@gbox.adnu.edu.ph</a></p>
             <form method="post" action="/dashboard/contact"  class="flex-center">
                 @csrf
-                <input type="text" name="name" placeholder="Name"/>
-                <input type="text" name="email" placeholder="Email"/>
+                <div {{ $errors->has('name') ? 'has-error' : '' }}>
+                    <span class="alert alert-danger" style="color:red"> {{ $errors->first('name') }}</span><br />
+                    <input type="text" name="name" placeholder="Name"/>
+                </div>
+                <div {{ $errors->has('email') ? 'has-error' : '' }}>
+                    <span class="alert alert-danger" style="color:red"> {{ $errors->first('email') }}</span><br />
+                    <input type="text" name="email" placeholder="Email"/>
+                </div>
+                <div {{ $errors->has('content') ? 'has-error' : '' }}>
+                    <span class="alert alert-danger" style="color:red"> {{ $errors->first('content') }}</span><br />
+                </div>
                 <textarea name="content" placeholder="Project Informations" class="body"></textarea>
                 <button type="submit" class="submit">Send Email</button>
             </form>
@@ -256,4 +272,7 @@
             });
         }).scroll();
     </script>
+    @jquery
+    @toastr_js
+    @toastr_render
 </html>

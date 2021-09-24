@@ -40,7 +40,7 @@ class ExperienceController extends Controller
 
         //Experience::insert($data);
         $data = DB::table('experiences')->get();
-        return view('dashboard.experience', ['data'=>$data]);
+        return view('dashboard.experience.index', ['data'=>$data]);
     }
 
 
@@ -57,16 +57,17 @@ class ExperienceController extends Controller
 
     public function show($id) {
         $data = DB::select('select * from experiences where id = ?',[$id]);
-        return view('dashboard.experience_update',['data'=>$data]);
+        return view('dashboard.experience.experience_update',['data'=>$data]);
     }
-    public function edit(Request $request, $id) {
+    public function edit(ExperienceRequest $request, $id) {
                 
         $position_name = $request->input('position_name');
         $description = $request->input('description');
         $year_started = $request->input('year_started');
         $year_resigned = $request->input('year_resigned');
         DB::update('update experiences set position_name = ?,description = ?,year_started = ?,year_resigned = ? where id = ?',[$position_name,$description,$year_started,$year_resigned,$id]);
-        return redirect('dashboard/experience')->with('message', 'Data Updated Succesfully');
+        toastr()->success('Data Updated Succesfully');
+        return redirect('dashboard/experience');
     }
                                             
       /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -86,7 +87,8 @@ class ExperienceController extends Controller
             $exp->year_started = $request->year_started;
             $exp->year_resigned = $request->year_resigned;
             $exp->save();
-            return redirect()->back()->with('message', 'Data Created Succesfully');
+            toastr()->success('Data Created Succesfully');
+            return redirect()->back();
         }
     
      /* $$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -100,7 +102,7 @@ class ExperienceController extends Controller
     
         public function destroy($id) {
             DB::delete('delete from experiences where id = ?',[$id]);
-    
-            return redirect()->back()->with('message', 'Record Deleted Succesfully');
+            toastr()->success('Data Deleted Succesfully');
+            return redirect()->back();
         }
 }

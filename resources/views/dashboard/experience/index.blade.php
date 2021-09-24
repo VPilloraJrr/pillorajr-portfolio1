@@ -1,6 +1,8 @@
 @extends('layouts.app')
+<title>Dashboard | Experience</title>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 @section('content')
+@toastr_css
 <div class="container">
     <div class="border-end" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -28,7 +30,11 @@
                 <div class="card-header">{{ __('EXPERIENCE') }}</div>
 
                 <div class="card-body">
-                    <x-alert />
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <table>
                         <tr>
                             <th>ID</th>
@@ -68,14 +74,43 @@
                 <div class="card-body">
                     <form method="post" action="/dashboard/experience" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="position_name" placeholder="Name"/>
-                        <input type="text" name="description" placeholder="Description"/>
-                        <input type="text" name="year_started" placeholder="Year Started"/>
-                        <input type="text" name="year_resigned" placeholder="Year Resigned"/>
+                        <table class="create">
+                            <tr>
+                                <td>
+                                    <div {{ $errors->has('position_name') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('position_name') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('description') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('description') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('year_started') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('year_started') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('year_resigned') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('year_resigned') }}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="position_name" placeholder="Name"/></td>
+                                <td><input type="text" name="description" placeholder="Description"/></td>
+                                <td> <input type="text" name="year_started" placeholder="Year Started"/></td>
+                                <td><input type="text" name="year_resigned" placeholder="Year Resigned"/></td>
+                            </tr>
+                        </table>
                         <button type="submit" class="submit btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
         </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection

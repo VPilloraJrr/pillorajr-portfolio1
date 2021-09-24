@@ -43,7 +43,7 @@ class EducationController extends Controller
        //Education::create($data3);
 
         $data = DB::table('educations')->get();
-        return view('dashboard.education', ['data'=>$data]);
+        return view('dashboard.education.index', ['data'=>$data]);
     }
     
     /*  $$$$$$$$\ $$$$$$$\  $$$$$$\ $$$$$$$$\ 
@@ -57,9 +57,9 @@ class EducationController extends Controller
 
         public function show($id) {
             $data = DB::select('select * from educations where id = ?',[$id]);
-            return view('dashboard.education_update',['data'=>$data]);
+            return view('dashboard.education.education_update',['data'=>$data]);
          }
-         public function edit(Request $request, $id) {
+         public function edit(EducationRequest $request, $id) {
     
             if($request->hasFile('logo')){
                 $filename = $request->input('logo')->getClientOriginalName();
@@ -77,7 +77,8 @@ class EducationController extends Controller
                 $logo = $request->input('logo');
                 DB::update('update educations set school_name = ?,year_started = ?,year_graduated = ?,logo = ? where id = ?',[$school_name,$year_started,$year_graduated,$logo,$id]);
             }
-            return redirect('dashboard/education')->with('message', 'Data Updated Succesfully');
+            toastr()->success('Data Updated Succesfully');
+            return redirect('dashboard/education');
          }
                                             
       /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -108,7 +109,8 @@ class EducationController extends Controller
                 $education->logo = $request->logo;
                 $education->save();
             }
-            return redirect()->back()->with('message', 'Data Created Succesfully');
+            toastr()->success('Data Created Succesfully');
+            return redirect()->back();
         }
     
      /* $$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -122,7 +124,7 @@ class EducationController extends Controller
     
         public function destroy($id) {
             DB::delete('delete from educations where id = ?',[$id]);
-    
-            return redirect()->back()->with('message', 'Record Deleted Succesfully');
+            toastr()->success('Data Deleted Succesfully');
+            return redirect()->back();
         }
 }

@@ -24,8 +24,10 @@ class EducationRequest extends FormRequest
     public function rules()
     {
         return [
-            'year_started' => 'integer',
-            'year_graduated' => 'integer|nullable',
+            'school_name' => 'required',
+            'year_started' => 'required|integer|digits:4',
+            'year_graduated' => 'integer|nullable|digits:4|gt:year_started',
+            'logo' => 'nullable|mimes:jpeg,png,jpg,bmp',
         ];
     }
     public function messages()
@@ -34,5 +36,17 @@ class EducationRequest extends FormRequest
             'year_started.integer' => 'Year Started should be the year started to study.',
             'year_graduated.integer' => 'Year Graduated should be the year graduated.',
         ];
+    }
+    public function withValidator($validator)
+    {
+        $messages = $validator->messages();
+
+        foreach ($messages->all() as $message)
+        {
+            toastr()->error ( $message);
+        }
+
+        return $validator->errors()->all();
+
     }
 }

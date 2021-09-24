@@ -1,6 +1,8 @@
 @extends('layouts.app')
+<title>Dashboard | Education </title>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 @section('content')
+@toastr_css
 <div class="container">
     <div class="border-end" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -28,7 +30,11 @@
                 <div class="card-header">{{ __('EDUCATION') }}</div>
 
                 <div class="card-body">
-                    <x-alert />
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <table>
                         <tr>
                             <th>ID</th>
@@ -73,14 +79,43 @@
                 <div class="card-body">
                     <form method="post" action="/dashboard/education" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="school_name" placeholder="Name"/>
-                        <input type="text" name="year_started" placeholder="Year Started"/>
-                        <input type="text" name="year_graduated" placeholder="Year Graduated"/>
-                        <input type="file" name="logo" />
+                        <table class="create">
+                            <tr>
+                                <td>
+                                    <div {{ $errors->has('school_name') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('school_name') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('year_started') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('year_started') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('year_graduated') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('year_graduated') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div {{ $errors->has('logo') ? 'has-error' : '' }}>
+                                        <span class="text-danger" > {{ $errors->first('logo') }}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="school_name" placeholder="Name"/></td>
+                                <td><input type="text" name="year_started" placeholder="Year Started"/></td>
+                                <td><input type="text" name="year_graduated" placeholder="Year Graduated"/></td>
+                                <td><input type="file" name="logo" /></td>
+                            </tr>
+                        </table>
                         <button type="submit" class="submit btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
         </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection
