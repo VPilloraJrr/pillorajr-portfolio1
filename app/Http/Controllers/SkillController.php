@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SkillController extends Controller
 {
@@ -77,21 +78,21 @@ class SkillController extends Controller
      }
      public function edit(SkillRequest $request, $id) {
 
-        if($request->hasFile('logo')){
-            $filename = $request->input('logo')->getClientOriginalName();
-            $request->input('logo')->storeAs('images', $filename, 'public');
-
-            $skill_name = $request->input('skill_name');
-            $percent = $request->input('percent');
-            $logo = $request->input('logo')->getClientOriginalName();
-            DB::update('update skills set skill_name = ?,percent = ?,logo = ? where id = ?',[$skill_name,$percent,$logo,$id]);
-        }else{
-            $skill_name = $request->input('skill_name');
-            $percent = $request->input('percent');
-            $logo = $request->input('logo');
-            DB::update('update skills set skill_name = ?,percent = ?,logo = ? where id = ?',[$skill_name,$percent,$logo,$id]);
+        
+        $update = ['skill_name'=>$request->skill_name,'percent'=>$request->percent, 'logo' =>$request->logo];
+        
+        if($files = $request->file('logo')){
+            $path = 'storage/images';
+            $filename = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->storeAs($path, $filename);
+            $update['logo'] = "$filename";
+            
         }
-        return redirect('dashboard/skill')->with('message', 'Data Updated Succesfully');
+        $update['skill_name'] = $request->get('skill_name');
+        $update['percent'] = $request->get('percent');
+        Skill::where('id', $id)->update($update);
+        toastr()->success('Data Updated Succesfully');
+        return redirect('dashboard/skill');
      }
                                         
   /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -104,27 +105,22 @@ class SkillController extends Controller
      \______/ \__|  \__|\________|\__|  \__|  \__|   \________| */
  
     public function storeSkill (SkillRequest $request){
-        if($request->fails()) {
-            return back()->withErrors($request->errors());
-        }else{
-            if($request->hasFile('logo')){
-                $filename = $request->file('logo')->getClientOriginalName();
-                $request->file('logo')->storeAs('images', $filename, 'public'); 
-    
-                $skill = new Skill();
-                $skill->skill_name = $request->skill_name;
-                $skill->percent = $request->percent;
-                $skill->logo = $request->file('logo')->getClientOriginalName();
-                $skill->save();
-            }else{
-                $skill = new Skill();
-                $skill->skill_name = $request->skill_name;
-                $skill->percent = $request->percent;
-                $skill->logo = $request->logo;
-                $skill->save(); 
-            }
-            return redirect()->back()->with('message', 'Data Created Succesfully');
+        $skill = new Skill();
+        $skill->skill_name = $request->skill_name;
+        $skill->percent = $request->percent;
+
+        if($files = $request->file('logo')){
+            $path = 'storage/images';
+            $filename = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($path, $filename);
+            $skill->logo = "$filename";
         }
+        $skill->save(); 
+        
+        toastr()->success('Data Created Succesfully');
+
+        return redirect()->back();
+        
     }
 
  /* $$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -138,7 +134,8 @@ class SkillController extends Controller
 
     public function destroy($id) {
         DB::delete('delete from skills where id = ?',[$id]);
-
-        return redirect()->back()->with('message', 'Record Deleted Succesfully');
+        toastr()->success('Record Deleted Succesfully');
+        return redirect()->back();
     }
+    
 }

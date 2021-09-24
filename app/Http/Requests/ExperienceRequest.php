@@ -26,8 +26,8 @@ class ExperienceRequest extends FormRequest
         return [
             'position_name' => 'required',
             'description' => 'required',
-            'year_started' => 'required|integer',
-            'year_resigned' => 'integer|nullable',
+            'year_started' => 'required|integer|digits:4',
+            'year_resigned' => 'integer|nullable|digits:4|gt:year_started',
         ];
     }
     public function messages()
@@ -36,5 +36,17 @@ class ExperienceRequest extends FormRequest
             'year_started.integer' => 'Year Started should be the year started to work.',
             'year_resigned.integer' => 'Year Graduated should be the year resigned.',
         ];
+    }
+    public function withValidator($validator)
+    {
+        $messages = $validator->messages();
+
+        foreach ($messages->all() as $message)
+        {
+            toastr()->error ( $message);
+        }
+
+        return $validator->errors()->all();
+
     }
 }

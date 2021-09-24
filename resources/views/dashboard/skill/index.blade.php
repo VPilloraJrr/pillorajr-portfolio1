@@ -1,6 +1,9 @@
 @extends('layouts.app')
+<title>Dashboard | Skills </title>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
+
 @section('content')
+@toastr_css
 <div class="container">
     <div class="border-end" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -28,9 +31,9 @@
                 <div class="card-header">{{ __('Skills') }}</div>
 
                 <div class="card-body">
-                    @if (session('message'))
+                    @if (session('success'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('message') }}
+                            {{ session('success') }}
                         </div>
                     @endif
                     <table class="row justify-content-center">
@@ -115,4 +118,7 @@
         </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection

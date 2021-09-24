@@ -26,7 +26,19 @@ class SkillRequest extends FormRequest
         return [
             'skill_name' => 'required',
             'percent' => 'required | integer| between:1, 100',
-            'logo' => 'nullable|mimes:jpeg,png,jpg,bmp',
+            'logo' => 'nullable',
         ];
+    }
+    public function withValidator($validator)
+    {
+        $messages = $validator->messages();
+
+        foreach ($messages->all() as $message)
+        {
+            toastr()->error ( $message);
+        }
+
+        return $validator->errors()->all();
+
     }
 }

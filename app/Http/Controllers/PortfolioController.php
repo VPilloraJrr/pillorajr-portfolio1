@@ -49,7 +49,8 @@ class PortfolioController extends Controller
             $screenshot = $request->input('screenshot');
             DB::update('update portfolios set project_name = ?,client = ?,description = ?,screenshot = ? where id = ?',[$project_name,$client,$description,$screenshot,$id]);
         }
-        return redirect('dashboard/portfolio')->with('message', 'Data Updated Succesfully');
+        toastr()->success('Data Updated Succesfully');
+        return redirect('dashboard/portfolio');
      }
                                         
   /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -80,7 +81,8 @@ class PortfolioController extends Controller
             $portfolio->screenshot = $request->screenshot;
             $portfolio->save(); 
         }
-        return redirect()->back()->with('message', 'Data Created Succesfully');
+        toastr()->success('Data Created Succesfully');
+        return redirect()->back();
     }
 
  /* $$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -94,7 +96,7 @@ class PortfolioController extends Controller
 
     public function destroy($id) {
         DB::delete('delete from portfolios where id = ?',[$id]);
-
-        return redirect()->back()->with('message', 'Record Deleted Succesfully');
+        toastr()->success('Data Deleted Succesfully');
+        return redirect()->back();
     }
 }

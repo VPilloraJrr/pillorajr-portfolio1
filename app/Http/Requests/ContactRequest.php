@@ -29,4 +29,16 @@ class ContactRequest extends FormRequest
             'content' => 'required| max:255',
         ];
     }
+    public function withValidator($validator)
+    {
+        $messages = $validator->messages();
+
+        foreach ($messages->all() as $message)
+        {
+            toastr()->error ( $message);
+        }
+
+        return $validator->errors()->all();
+
+    }
 }

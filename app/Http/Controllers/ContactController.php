@@ -16,16 +16,14 @@ class ContactController extends Controller
     }
 
     public function storeContact (ContactRequest $request){
-        if($request->fails()) {
-            return back()->withErrors($request->errors());
-        }else{
-            $contact = new Contact();
-            $contact->name = $request->name;
-            $contact->email = $request->email;
-            $contact->content = $request->content;
-            $contact->save();
-            return redirect()->back()->with('message', 'Message Created Succesfully');
-        }
+        
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->content = $request->content;
+        $contact->save();
+        toastr()->success('Email Created Succesfully');
+        return redirect()->back();
         
     }
       /*$$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -40,7 +38,7 @@ class ContactController extends Controller
     
         public function destroy($id) {
             DB::delete('delete from contacts where id = ?',[$id]);
-    
-            return redirect()->back()->with('message', 'Record Deleted Succesfully');
+            toastr()->success('Data Deleted Succesfully');
+            return redirect()->back();
         }
 }

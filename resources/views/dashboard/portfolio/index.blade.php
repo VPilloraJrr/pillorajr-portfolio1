@@ -1,6 +1,8 @@
 @extends('layouts.app')
+<title>Dashboard | Portfolio </title>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 @section('content')
+
 <div class="container">
     <div class="border-end" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -118,4 +120,7 @@
         </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection

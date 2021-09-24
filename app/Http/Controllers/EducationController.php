@@ -77,7 +77,8 @@ class EducationController extends Controller
                 $logo = $request->input('logo');
                 DB::update('update educations set school_name = ?,year_started = ?,year_graduated = ?,logo = ? where id = ?',[$school_name,$year_started,$year_graduated,$logo,$id]);
             }
-            return redirect('dashboard/education')->with('message', 'Data Updated Succesfully');
+            toastr()->success('Data Updated Succesfully');
+            return redirect('dashboard/education');
          }
                                             
       /* $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -108,7 +109,8 @@ class EducationController extends Controller
                 $education->logo = $request->logo;
                 $education->save();
             }
-            return redirect()->back()->with('message', 'Data Created Succesfully');
+            toastr()->success('Data Created Succesfully');
+            return redirect()->back();
         }
     
      /* $$$$$$$\  $$$$$$$$\ $$\       $$$$$$$$\ $$$$$$$$\ $$$$$$$$\ 
@@ -122,7 +124,7 @@ class EducationController extends Controller
     
         public function destroy($id) {
             DB::delete('delete from educations where id = ?',[$id]);
-    
-            return redirect()->back()->with('message', 'Record Deleted Succesfully');
+            toastr()->success('Data Deleted Succesfully');
+            return redirect()->back();
         }
 }
